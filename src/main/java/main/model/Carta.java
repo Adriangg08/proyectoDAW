@@ -1,28 +1,30 @@
 package main.model;
 
-import java.util.Set;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.PrimaryKeyJoinColumn;
 
-@Entity
-@Table(name = "platos")
-public class Plato {
+public class Carta {
 
+	//Platos disponibles
+	
+	//La id es la del plato
 	@Id
+	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
-	@OneToOne(mappedBy = "plato", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-	private Carta cartaPlato;
+	@OneToOne
+	@PrimaryKeyJoinColumn(name = "carta_id", referencedColumnName = "id")
+	private Plato plato;
+	
+	@OneToOne(mappedBy = "carta_menu", cascade = CascadeType.ALL)
+	private Carta carta;
 	
 	@Column(name = "nombre")
 	private String nombre;
@@ -33,14 +35,8 @@ public class Plato {
 	@Column(name = "descripcion")
 	private String descripcion;
 	
-	@Column(name = "disponible")
-	private boolean disponible;
-	
 	@Column(name = "precio")
 	private Double precio;
-	
-	@ManyToMany(mappedBy = "platos",cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER)
-	private Set<Reserva> reservas;
 
 	public int getId() {
 		return id;
@@ -50,12 +46,20 @@ public class Plato {
 		this.id = id;
 	}
 
-	public Carta getCartaPlato() {
-		return cartaPlato;
+	public Plato getPlato() {
+		return plato;
 	}
 
-	public void setCartaPlato(Carta cartaPlato) {
-		this.cartaPlato = cartaPlato;
+	public void setPlato(Plato plato) {
+		this.plato = plato;
+	}
+
+	public Carta getCarta() {
+		return carta;
+	}
+
+	public void setCarta(Carta carta) {
+		this.carta = carta;
 	}
 
 	public String getNombre() {
@@ -82,28 +86,12 @@ public class Plato {
 		this.descripcion = descripcion;
 	}
 
-	public boolean isDisponible() {
-		return disponible;
-	}
-
-	public void setDisponible(boolean disponible) {
-		this.disponible = disponible;
-	}
-
 	public Double getPrecio() {
 		return precio;
 	}
 
 	public void setPrecio(Double precio) {
 		this.precio = precio;
-	}
-
-	public Set<Reserva> getReservas() {
-		return reservas;
-	}
-
-	public void setReservas(Set<Reserva> reservas) {
-		this.reservas = reservas;
 	}
 	
 	
