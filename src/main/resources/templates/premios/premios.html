@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Fartuquin</title>
+    <link rel="stylesheet" href="/estilosGenerales/normalize.css">
+    <link rel="stylesheet" href="/estilosGenerales/carrusel.css">
+    <link rel="stylesheet" href="/estilosGenerales/menu.css">
+    <link rel="stylesheet" href="premios.css">
+    <link rel="stylesheet" href="/estilosGenerales/darkMode.css">
+    <script src="/scripts/menu.js"></script>
+    <script src="https://kit.fontawesome.com/fb2a479feb.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <!--Menu lateral-->
+
+    <section class="menu">
+
+      <section class="menuLogo">
+          <a href="/index/index.html"><img src="/imagenes/logoNegro.jpeg" alt=""></a>
+      </section>
+
+      <section class="menuLista">
+          <nav>
+              <ul>
+                  <li><a href="/carta/carta.html">Carta</a></li>
+                  <li><a href="/premios/premios.html">Premios</a></li>
+                  <li id="li-desplegable">
+                      <a onclick="toggleMenu()" href="#">Fartucate</a>
+                      <ul id="menuLista-desplegable">
+                          <li><a href="/fartucate/fartucate.html">Pide tu comida</a></li>
+                          <li><a href="/reserva-mesa/mesa.html">Reserva tu mesa</a></li>
+                      </ul>
+                  </li>
+                  <li><a href="/contacto/contacto.html">Contacto</a></li>
+              </ul>
+          </nav>
+      </section>
+
+      <!-- <section class="menuLogIn">
+          <form action="" method="post">
+              <input type="text" placeholder="Usuario">
+              <input type="text" placeholder="Contraseña">
+          </form>
+      </section> -->
+
+      <section id="btn-oscuro-container">
+          <section id="btn-oscuro">
+              <div id="btn-oscuro-bola"></div>
+          </section>
+      </section>
+
+  </section>
+
+    <section class="pagina">
+
+        <!-- Carrusel -->
+        <section class="carrusel">
+            <!-- Contenedor -->
+            <section class="slider-wrapper">
+                <!-- Flecha hacia atras -->
+                <button class="slide-arrow" id="slide-arrow-prev">
+                    &#8249;
+                </button>
+                <!-- Flecha hacia delante -->
+                <button class="slide-arrow" id="slide-arrow-next">
+                    &#8250;
+                </button>
+                <!-- Contenedor de cada porcion-->
+                <ul class="slides-container" id="slides-container">
+                  <li class="slide">
+                      <img src="/imagenes/premio1.jpeg" alt="">
+                      <section class="infoPremio">
+                        <h1>#1 Ranking Celicidad 2022</h1>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum eos excepturi eum deleniti! Neque deserunt, optio cum repudiandae mollitia fugit debitis eos in illum natus, asperiores quisquam aliquam earum ipsa.</p>
+                        <a href="#premio1">Mas info</a>
+                      </section>
+                  </li>
+                  <li class="slide">
+                    <img src="/imagenes/premio2.jpg" alt="">
+                    <section class="infoPremio">
+                      <h1>“orgullosos” la “Mención especial del Antroxu”</h1>
+                      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum eos excepturi eum deleniti! Neque deserunt, optio cum repudiandae mollitia fugit debitis eos in illum natus, asperiores quisquam aliquam earum ipsa.</p>
+                      <a href="#premio2">Mas info</a>
+                    </section>
+                  </li>
+                  <li class="slide">
+                    <img src="/imagenes/premio3.jpeg" alt="">
+                    <section class="infoPremio">
+                      <h1>Precio nacional gastronomia</h1>
+                      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum eos excepturi eum deleniti! Neque deserunt, optio cum repudiandae mollitia fugit debitis eos in illum natus, asperiores quisquam aliquam earum ipsa.</p>
+                      <a href="#premio3">Mas info</a>
+                    </section>
+                  </li>
+                  <li class="slide">
+                    <img src="/imagenes/premio4.jpeg" alt="">
+                    <section class="infoPremio">
+                      <h1>Premios FACE 2018</h1>
+                      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum eos excepturi eum deleniti! Neque deserunt, optio cum repudiandae mollitia fugit debitis eos in illum natus, asperiores quisquam aliquam earum ipsa.</p>
+                      <a href="#premio4">Mas info</a>
+                    </section>
+                  </li>
+                </ul>
+            </section>
+            <script src="/scripts/carrusel.js"></script>
+        </section>
+
+        <!--Premios-->
+
+        <section class="container">
+          <section id="premio1" class="premio">
+            <img src="/imagenes/premio1.jpeg" alt="">
+            <section class="infoPremio">
+              <h1>#1 Ranking Celicidad 2022</h1>
+              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum eos excepturi eum deleniti! Neque deserunt, optio cum repudiandae mollitia fugit debitis eos in illum natus, asperiores quisquam aliquam earum ipsa.</p>
+              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum eos excepturi eum deleniti! Neque deserunt, optio cum repudiandae mollitia fugit debitis eos in illum natus, asperiores quisquam aliquam earum ipsa.</p>
+              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum eos excepturi eum deleniti! Neque deserunt, optio cum repudiandae mollitia fugit debitis eos in illum natus, asperiores quisquam aliquam earum ipsa.</p>
+            </section>
+          </section>
+        </section>
+
+        <section class="container">
+          <section id="premio2" class="premio">
+            <img src="/imagenes/premio2.jpg" alt="">
+            <section class="infoPremio">
+              <h1>#1 Ranking Celicidad 2022</h1>
+              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum eos excepturi eum deleniti! Neque deserunt, optio cum repudiandae mollitia fugit debitis eos in illum natus, asperiores quisquam aliquam earum ipsa.</p>
+              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum eos excepturi eum deleniti! Neque deserunt, optio cum repudiandae mollitia fugit debitis eos in illum natus, asperiores quisquam aliquam earum ipsa.</p>
+              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum eos excepturi eum deleniti! Neque deserunt, optio cum repudiandae mollitia fugit debitis eos in illum natus, asperiores quisquam aliquam earum ipsa.</p>
+            </section>
+          </section>
+        </section>
+
+        <section class="container">
+          <section id="premio3" class="premio">
+            <img src="/imagenes/premio3.jpeg" alt="">
+            <section class="infoPremio">
+              <h1>#1 Ranking Celicidad 2022</h1>
+              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum eos excepturi eum deleniti! Neque deserunt, optio cum repudiandae mollitia fugit debitis eos in illum natus, asperiores quisquam aliquam earum ipsa.</p>
+              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum eos excepturi eum deleniti! Neque deserunt, optio cum repudiandae mollitia fugit debitis eos in illum natus, asperiores quisquam aliquam earum ipsa.</p>
+              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum eos excepturi eum deleniti! Neque deserunt, optio cum repudiandae mollitia fugit debitis eos in illum natus, asperiores quisquam aliquam earum ipsa.</p>
+            </section>
+          </section>
+        </section>
+
+        <section class="container">
+          <section id="premio4" class="premio">
+            <img src="/imagenes/premio4.jpeg" alt="">
+            <section class="infoPremio">
+              <h1>#1 Ranking Celicidad 2022</h1>
+              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum eos excepturi eum deleniti! Neque deserunt, optio cum repudiandae mollitia fugit debitis eos in illum natus, asperiores quisquam aliquam earum ipsa.</p>
+              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum eos excepturi eum deleniti! Neque deserunt, optio cum repudiandae mollitia fugit debitis eos in illum natus, asperiores quisquam aliquam earum ipsa.</p>
+              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum eos excepturi eum deleniti! Neque deserunt, optio cum repudiandae mollitia fugit debitis eos in illum natus, asperiores quisquam aliquam earum ipsa.</p>
+            </section>
+          </section>
+        </section>
+    </section>
+    <script src="/scripts/darkmode.js"></script>
+</body>
+</html>

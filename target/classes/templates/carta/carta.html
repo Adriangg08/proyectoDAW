@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Fartuquin</title>
+    <link rel="stylesheet" href="/estilosGenerales/normalize.css">
+    <link rel="stylesheet" href="carta.css">
+    <link rel="stylesheet" href="/estilosGenerales/menu.css">
+    <link rel="stylesheet" href="/estilosGenerales/darkMode.css">
+    <script src="/scripts/menu.js"></script>
+    <script src="https://kit.fontawesome.com/fb2a479feb.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <!--Menu lateral-->
+    <section class="menu">
+
+        <section class="menuLogo">
+            <a href="/index/index.html"><img src="/imagenes/logoNegro.jpeg" alt=""></a>
+        </section>
+
+        <section class="menuLista">
+            <nav>
+                <ul>
+                    <li><a href="/carta/carta.html">Carta</a></li>
+                    <li><a href="/premios/premios.html">Premios</a></li>
+                    <li id="li-desplegable">
+                        <a onclick="toggleMenu()" href="#">Fartucate</a>
+                        <ul id="menuLista-desplegable">
+                            <li><a href="/fartucate/fartucate.html">Pide tu comida</a></li>
+                            <li><a href="/reserva-mesa/mesa.html">Reserva tu mesa</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/contacto/contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+        </section>
+
+        <!-- <section class="menuLogIn">
+            <form action="" method="post">
+                <input type="text" placeholder="Usuario">
+                <input type="text" placeholder="Contraseña">
+            </form>
+        </section> -->
+
+        <section id="btn-oscuro-container">
+            <section id="btn-oscuro">
+                <div id="btn-oscuro-bola"></div>
+            </section>
+        </section>
+
+    </section>
+
+    <section class="pagina">
+
+        <!--Barra busqueda-->
+        <section class="barraBusqueda">
+            <h1>Carta</h1>
+            <span class="descripcion">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum voluptatibus officia praesentium, iste facere exercitationem.
+            </span>
+            <form action="" method="post">
+                <input type="text" placeholder="Introduzca cualquier plato o ingrediente">
+            </form>
+
+        </section>
+
+        <!--Carta-->
+        <section class="carta">
+
+            <section class="item">
+                <img src="/imagenes/Filete de solomillo en milhoja de manchego.jpeg" alt="" id="foto1">
+                <div class="item-texto">
+                    <p>Nombre plato</p>
+                    <p>X E</p>
+                    <p>
+                        <i class="fa-solid fa-wheat-awn-circle-exclamation"></i>
+                        <i class="fa-solid fa-wheat-awn-circle-exclamation"></i>
+                        <i class="fa-solid fa-wheat-awn-circle-exclamation"></i>
+                    </p>
+
+                </div>
+                <section class="fotoZoom">
+                    <!--&times; = Icono "X" -->
+                    <span class="botonCerrar">&times;</span> 
+                    <img class="contenido" id="img">
+                    <div class="descripcion-plato">
+                        <h1>Nombre plato</h1>
+                        <h2>
+                            <i class="fa-solid fa-wheat-awn-circle-exclamation"></i>
+                            <i class="fa-solid fa-wheat-awn-circle-exclamation"></i>
+                            <i class="fa-solid fa-wheat-awn-circle-exclamation"></i>
+                        </h2>
+                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus molestiae incidunt, esse tempora sint consectetur error sapiente eum quisquam id alias sed obcaecati accusamus delectus officiis nam repellat non quaerat optio suscipit laborum ab dolorum possimus unde? Inventore, voluptatibus nam? Maxime, aut? Quibusdam facilis nobis ex, error dicta facere reprehenderit.</span>
+                    </div>
+                </section>
+            </section>
+
+            <section class="item">
+                <img src="/imagenes/Churrasco de atún rojo con salsa barbacoa.jpeg" alt="">
+                <div class="item-texto">
+                    <p>Nombre plato</p>
+                    <p>X E</p>
+                     <p>
+                        <i class="fa-solid fa-wheat-awn-circle-exclamation"></i>
+                        <i class="fa-solid fa-wheat-awn-circle-exclamation"></i>
+                        <i class="fa-solid fa-wheat-awn-circle-exclamation"></i>
+                    </p>
+                </div>
+                <section class="fotoZoom">
+                    <!--&times; = Icono "X" -->
+                    <span class="botonCerrar">&times;</span> 
+                    <img class="contenido" id="img">
+                    <div class="descripcion-plato">
+                        <h1>Nombre plato</h1>
+                        <h2>
+                            <i class="fa-solid fa-wheat-awn-circle-exclamation"></i>
+                            <i class="fa-solid fa-wheat-awn-circle-exclamation"></i>
+                            <i class="fa-solid fa-wheat-awn-circle-exclamation"></i>
+                        </h2>
+                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus molestiae incidunt, esse tempora sint consectetur error sapiente eum quisquam id alias sed obcaecati accusamus delectus officiis nam repellat non quaerat optio suscipit laborum ab dolorum possimus unde? Inventore, voluptatibus nam? Maxime, aut? Quibusdam facilis nobis ex, error dicta facere reprehenderit.</span>
+                    </div>
+                </section>
+            </section>
+
+            <section class="item">
+                <img src="/imagenes/Croquetas.jpeg" alt="">
+                <div class="item-texto">
+                    <p>Nombre plato</p>
+                    <p>X E</p>
+                     <p>
+                        <i class="fa-solid fa-wheat-awn-circle-exclamation"></i>
+                        <i class="fa-solid fa-wheat-awn-circle-exclamation"></i>
+                        <i class="fa-solid fa-wheat-awn-circle-exclamation"></i>
+                    </p>
+                </div>
+                <section class="fotoZoom">
+                    <!--&times; = Icono "X" -->
+                    <span class="botonCerrar">&times;</span> 
+                    <img class="contenido" id="img">
+                    <div class="descripcion-plato">
+                        <h1>Nombre plato</h1>
+                        <h2>
+                            <i class="fa-solid fa-wheat-awn-circle-exclamation"></i>
+                            <i class="fa-solid fa-wheat-awn-circle-exclamation"></i>
+                            <i class="fa-solid fa-wheat-awn-circle-exclamation"></i>
+                        </h2>
+                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus molestiae incidunt, esse tempora sint consectetur error sapiente eum quisquam id alias sed obcaecati accusamus delectus officiis nam repellat non quaerat optio suscipit laborum ab dolorum possimus unde? Inventore, voluptatibus nam? Maxime, aut? Quibusdam facilis nobis ex, error dicta facere reprehenderit.</span>
+                    </div>
+                </section>
+            </section>
+
+            <section class="item">
+                <img src="/imagenes/Ensalada de ventresca.jpeg" alt="">
+                <div class="item-texto">
+                    <p>Nombre plato</p>
+                    <p>X E</p>
+                     <p>
+                        <i class="fa-solid fa-wheat-awn-circle-exclamation"></i>
+                        <i class="fa-solid fa-wheat-awn-circle-exclamation"></i>
+                        <i class="fa-solid fa-wheat-awn-circle-exclamation"></i>
+                    </p>
+                </div>
+                <section class="fotoZoom">
+                    <!--&times; = Icono "X" -->
+                    <span class="botonCerrar">&times;</span> 
+                    <img class="contenido" id="img">
+                    <div class="descripcion-plato">
+                        <h1>Nombre plato</h1>
+                        <h2>
+                            <i class="fa-solid fa-wheat-awn-circle-exclamation"></i>
+                            <i class="fa-solid fa-wheat-awn-circle-exclamation"></i>
+                            <i class="fa-solid fa-wheat-awn-circle-exclamation"></i>
+                        </h2>
+                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus molestiae incidunt, esse tempora sint consectetur error sapiente eum quisquam id alias sed obcaecati accusamus delectus officiis nam repellat non quaerat optio suscipit laborum ab dolorum possimus unde? Inventore, voluptatibus nam? Maxime, aut? Quibusdam facilis nobis ex, error dicta facere reprehenderit.</span>
+                    </div>
+                </section>
+            </section>
+
+            <section class="item">
+                <img src="/imagenes/Fabada asturiana.jpeg" alt="">
+                <div class="item-texto">
+                    <p>Nombre plato</p>
+                    <p>X E</p>
+                    <p>a1 a2 a3</p>
+                </div>
+                <section class="fotoZoom">
+                    <!--&times; = Icono "X" -->
+                    <span class="botonCerrar">&times;</span> 
+                    <img class="contenido" id="img">
+                    <div class="descripcion-plato">
+                        <h1>Nombre plato</h1>
+                        <h2>
+                            <i class="fa-solid fa-wheat-awn-circle-exclamation"></i>
+                            <i class="fa-solid fa-wheat-awn-circle-exclamation"></i>
+                            <i class="fa-solid fa-wheat-awn-circle-exclamation"></i>
+                        </h2>
+                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus molestiae incidunt, esse tempora sint consectetur error sapiente eum quisquam id alias sed obcaecati accusamus delectus officiis nam repellat non quaerat optio suscipit laborum ab dolorum possimus unde? Inventore, voluptatibus nam? Maxime, aut? Quibusdam facilis nobis ex, error dicta facere reprehenderit.</span>
+                    </div>
+                </section>
+            </section>
+
+            <section class="item">
+                <img src="/imagenes/Fabas con almejas.jpeg" alt="">
+                <div class="item-texto">
+                    <p>Nombre plato</p>
+                    <p>X E</p>
+                    <p>a1 a2 a3</p>
+                </div>
+                <section class="fotoZoom">
+                    <!--&times; = Icono "X" -->
+                    <span class="botonCerrar">&times;</span> 
+                    <img class="contenido" id="img">
+                    <div class="descripcion-plato">
+                        <h1>Nombre plato</h1>
+                        <h2>
+                            <i class="fa-solid fa-wheat-awn-circle-exclamation"></i>
+                            <i class="fa-solid fa-wheat-awn-circle-exclamation"></i>
+                            <i class="fa-solid fa-wheat-awn-circle-exclamation"></i>
+                        </h2>
+                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus molestiae incidunt, esse tempora sint consectetur error sapiente eum quisquam id alias sed obcaecati accusamus delectus officiis nam repellat non quaerat optio suscipit laborum ab dolorum possimus unde? Inventore, voluptatibus nam? Maxime, aut? Quibusdam facilis nobis ex, error dicta facere reprehenderit.</span>
+                    </div>
+                </section>
+            </section>
+
+            <section class="item">
+                <img src="/imagenes/Filete de solomillo en milhoja de manchego.jpeg" alt="">
+                <div class="item-texto">
+                    <p>Nombre plato</p>
+                    <p>X E</p>
+                    <p>a1 a2 a3</p>
+                </div>
+                <section class="fotoZoom">
+                    <!--&times; = Icono "X" -->
+                    <span class="botonCerrar">&times;</span> 
+                    <img class="contenido" id="img">
+                    <div class="descripcion-plato">
+                        <h1>Nombre plato</h1>
+                        <h2>
+                            <i class="fa-solid fa-wheat-awn-circle-exclamation"></i>
+                            <i class="fa-solid fa-wheat-awn-circle-exclamation"></i>
+                            <i class="fa-solid fa-wheat-awn-circle-exclamation"></i>
+                        </h2>
+                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus molestiae incidunt, esse tempora sint consectetur error sapiente eum quisquam id alias sed obcaecati accusamus delectus officiis nam repellat non quaerat optio suscipit laborum ab dolorum possimus unde? Inventore, voluptatibus nam? Maxime, aut? Quibusdam facilis nobis ex, error dicta facere reprehenderit.</span>
+                    </div>
+                </section>
+            </section>
+
+            <section class="item">
+                <img src="/imagenes/Flor de Alcachofa con huevo de codorniz y jamón ibérico.jpeg" alt="">
+                <div class="item-texto">
+                    <p>Nombre plato</p>
+                    <p>X E</p>
+                    <p>a1 a2 a3</p>
+                </div>
+                <section class="fotoZoom">
+                    <!--&times; = Icono "X" -->
+                    <span class="botonCerrar">&times;</span> 
+                    <img class="contenido" id="img">
+                    <div class="descripcion-plato">
+                        <h1>Nombre plato</h1>
+                        <h2>
+                            <i class="fa-solid fa-wheat-awn-circle-exclamation"></i>
+                            <i class="fa-solid fa-wheat-awn-circle-exclamation"></i>
+                            <i class="fa-solid fa-wheat-awn-circle-exclamation"></i>
+                        </h2>
+                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus molestiae incidunt, esse tempora sint consectetur error sapiente eum quisquam id alias sed obcaecati accusamus delectus officiis nam repellat non quaerat optio suscipit laborum ab dolorum possimus unde? Inventore, voluptatibus nam? Maxime, aut? Quibusdam facilis nobis ex, error dicta facere reprehenderit.</span>
+                    </div>
+                </section>
+            </section>
+
+            <section class="item">
+                <img src="/imagenes/Merluza rellena de marisco.jpeg" alt="">
+                <div class="item-texto">
+                    <p>Nombre plato</p>
+                    <p>X E</p>
+                    <p>a1 a2 a3</p>
+                </div>
+                <section class="fotoZoom">
+                    <!--&times; = Icono "X" -->
+                    <span class="botonCerrar">&times;</span> 
+                    <img class="contenido" id="img">
+                    <div class="descripcion-plato">
+                        <h1>Nombre plato</h1>
+                        <h2>
+                            <i class="fa-solid fa-wheat-awn-circle-exclamation"></i>
+                            <i class="fa-solid fa-wheat-awn-circle-exclamation"></i>
+                            <i class="fa-solid fa-wheat-awn-circle-exclamation"></i>
+                        </h2>
+                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus molestiae incidunt, esse tempora sint consectetur error sapiente eum quisquam id alias sed obcaecati accusamus delectus officiis nam repellat non quaerat optio suscipit laborum ab dolorum possimus unde? Inventore, voluptatibus nam? Maxime, aut? Quibusdam facilis nobis ex, error dicta facere reprehenderit.</span>
+                    </div>
+                </section>
+            </section>
+
+            <section class="item">
+                <img src="/imagenes/Pastel de queso asturianos con mermelada de zanahoria y dados de sidra.jpeg" alt="">
+                <div class="item-texto">
+                    <p>Nombre plato</p>
+                    <p>X E</p>
+                    <p>a1 a2 a3</p>
+                </div>
+                <section class="fotoZoom">
+                    <!--&times; = Icono "X" -->
+                    <span class="botonCerrar">&times;</span> 
+                    <img class="contenido" id="img">
+                    <div class="descripcion-plato">
+                        <h1>Nombre plato</h1>
+                        <h2>
+                            <i class="fa-solid fa-wheat-awn-circle-exclamation"></i>
+                            <i class="fa-solid fa-wheat-awn-circle-exclamation"></i>
+                            <i class="fa-solid fa-wheat-awn-circle-exclamation"></i>
+                        </h2>
+                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus molestiae incidunt, esse tempora sint consectetur error sapiente eum quisquam id alias sed obcaecati accusamus delectus officiis nam repellat non quaerat optio suscipit laborum ab dolorum possimus unde? Inventore, voluptatibus nam? Maxime, aut? Quibusdam facilis nobis ex, error dicta facere reprehenderit.</span>
+                    </div>
+                </section>
+            </section>
+
+            <section class="item">
+                <img src="/imagenes/Tarta chocolate.jpeg" alt="">
+                <div class="item-texto">
+                    <p>Nombre plato</p>
+                    <p>X E</p>
+                    <p>a1 a2 a3</p>
+                </div>
+                <section class="fotoZoom">
+                    <!--&times; = Icono "X" -->
+                    <span class="botonCerrar">&times;</span> 
+                    <img class="contenido" id="img">
+                    <div class="descripcion-plato">
+                        <h1>Nombre plato</h1>
+                        <h2>
+                            <i class="fa-solid fa-wheat-awn-circle-exclamation"></i>
+                            <i class="fa-solid fa-wheat-awn-circle-exclamation"></i>
+                            <i class="fa-solid fa-wheat-awn-circle-exclamation"></i>
+                        </h2>
+                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus molestiae incidunt, esse tempora sint consectetur error sapiente eum quisquam id alias sed obcaecati accusamus delectus officiis nam repellat non quaerat optio suscipit laborum ab dolorum possimus unde? Inventore, voluptatibus nam? Maxime, aut? Quibusdam facilis nobis ex, error dicta facere reprehenderit.</span>
+                    </div>
+                </section>
+            </section>
+
+    </section>
+    <script src="/scripts/zoomFotos.js"></script>
+    <script src="/scripts/darkmode.js"></script>
+</body>
+</html>

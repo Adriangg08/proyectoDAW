@@ -63,7 +63,7 @@ public class MainController {
 		
 		
 		
-		return "/";
+		return "index";
 	}
 	
 }

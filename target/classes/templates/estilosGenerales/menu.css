@@ -1,0 +1,144 @@
+/*Menu*/
+.menu {
+    border: 1px solid var(--texto);
+    width: 20%;
+    height: 100vh;
+    padding: 1%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgb(119, 20, 20);
+}
+
+.menuLogo {
+    border: 1px solid var(--texto);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5%;
+    background-color: black;
+}
+
+.menuLogo img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 20px;
+}
+
+.menuLogo a {
+    display: block;
+    width: 100%;
+    text-align: center;
+    color: var(--texto);
+}
+
+.menuLista {
+    /* height: 40%; */
+}
+
+.menuLista nav {
+    height: 100%;
+}
+
+.menuLista ul {
+    /*Limpieza*/
+    margin: 0px;
+    padding: 0%;
+    list-style-type: none;
+    list-style-position: inside;
+    /*Colocacion*/
+    height: 100%;
+}
+
+.menuLista li {
+    width: 100%;
+    height: 24%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.menuLista a:hover {
+    background-color: rgb(187, 185, 185);
+}
+
+.menuLista a{
+    font-size: 1.5em;
+    text-decoration: none;
+    color: white;
+    width: 100%;
+    text-align: center;
+    padding: 10% 0;
+}
+
+#menuLista-desplegable {
+    display: none;
+    width: 100%;
+    height: 66%;
+}
+
+#menuLista-desplegable li {
+    padding: 0;
+}
+
+#li-desplegable {
+    flex-direction: column;
+    padding: 0;
+}
+
+#li-desplegable a {
+    /* width: 100%;
+    text-align: center;
+    padding: 10% 0; */
+}
+
+.menuLogIn {
+    border: 1px solid black;
+    /* height: 30%; */
+}
+
+.menuLogIn form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.menuLogIn input {
+    border-radius: 30px;
+    font-size: 1em;
+    padding: 5%;
+    max-width: 100%;
+    margin-top: 5%;
+}
+
+.pagina {
+    width: 80%;
+    position: absolute;
+    left: 20%;
+}
+
+#btn-oscuro-container {
+    padding: 10% 0;
+    display: flex;
+    justify-content: center;
+}
+
+#btn-oscuro {
+    width: 100px;
+    height: 50px;
+    border-radius: 30px;
+    border: 1px solid var(--texto);;
+    padding: 2px;
+    display: flex;
+}
+
+#btn-oscuro-bola {
+    width: 45px;
+    height: 45px;
+    border-radius: 25px;
+    background-color: gray;
+}

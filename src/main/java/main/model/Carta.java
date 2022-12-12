@@ -9,21 +9,23 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class Carta {
 
 	//Platos disponibles
 	
 	//La id es la del plato
 	@Id
-	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id")
 	private int id;
 	
 	@OneToOne
-	@PrimaryKeyJoinColumn(name = "carta_id", referencedColumnName = "id")
+	@PrimaryKeyJoinColumn(name = "id", referencedColumnName = "id_plato")
 	private Plato plato;
 	
-	@OneToOne(mappedBy = "carta_menu", cascade = CascadeType.ALL)
+	@OneToOne(mappedBy = "carta", cascade = CascadeType.ALL)
 	private Carta carta;
 	
 	@Column(name = "nombre")
@@ -37,7 +39,7 @@ public class Carta {
 	
 	@Column(name = "precio")
 	private Double precio;
-
+	
 	public int getId() {
 		return id;
 	}

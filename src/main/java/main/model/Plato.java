@@ -13,6 +13,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 @Entity
 @Table(name = "platos")
 public class Plato {
@@ -22,7 +24,7 @@ public class Plato {
 	private int id;
 	
 	@OneToOne(mappedBy = "plato", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-	private Carta cartaPlato;
+	private Carta cartaplato;
 	
 	@Column(name = "nombre")
 	private String nombre;
@@ -41,7 +43,7 @@ public class Plato {
 	
 	@ManyToMany(mappedBy = "platos",cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER)
 	private Set<Reserva> reservas;
-
+	
 	public int getId() {
 		return id;
 	}
@@ -51,11 +53,11 @@ public class Plato {
 	}
 
 	public Carta getCartaPlato() {
-		return cartaPlato;
+		return cartaplato;
 	}
 
-	public void setCartaPlato(Carta cartaPlato) {
-		this.cartaPlato = cartaPlato;
+	public void setCartaPlato(Carta carta) {
+		this.cartaplato = carta;
 	}
 
 	public String getNombre() {

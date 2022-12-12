@@ -10,12 +10,12 @@ public class Menu {
 	//De los platos disponibles (Carta) unos pocos (menu)
 	
 	@Id
-	@Column(name = "id_menu_plato")
+	@Column(name = "id")
 	private int id;
 	
 	@OneToOne
-	@PrimaryKeyJoinColumn(name = "id_menu_plato", referencedColumnName = "id_carta_plato")
-	private Carta carta_menu;
+	@PrimaryKeyJoinColumn(name = "id", referencedColumnName = "id_carta")
+	private Carta cartamenu;
 	
 	@Column(name = "nombre")
 	private String nombre;
@@ -37,12 +37,12 @@ public class Menu {
 		this.id = id;
 	}
 
-	public Carta getCarta_menu() {
-		return carta_menu;
+	public Carta getCartaMenu() {
+		return cartamenu;
 	}
 
-	public void setCarta_menu(Carta carta_menu) {
-		this.carta_menu = carta_menu;
+	public void setCartaMenu(Carta carta) {
+		this.cartamenu = carta;
 	}
 
 	public String getNombre() {
