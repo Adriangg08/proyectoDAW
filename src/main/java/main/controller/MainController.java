@@ -11,19 +11,18 @@ import main.daos.MenuRepo;
 import main.daos.PlatoRepo;
 import main.daos.ReservaRepo;
 import main.daos.StockRepo;
-import main.model.Carta;
-import main.model.Ingrediente;
-import main.model.Menu;
-import main.model.Plato;
-import main.model.Reserva;
-import main.model.Stock;
+import main.model.Carta2;
+import main.model.Ingrediente2;
+import main.model.Menu2;
+import main.model.Plato2;
+import main.model.Reserva2;
+import main.model.Stock2;
 
 
 @RequestMapping("/")
 @Controller
 public class MainController {
 
-	
 	@Autowired
 	private static CartaRepo cartaRepo;
 	
@@ -46,12 +45,12 @@ public class MainController {
 	String home() {
 		
 		
-		Carta carta = new Carta();
-		Ingrediente ingrediente = new Ingrediente();
-		Menu menu = new Menu();
-		Plato plato = new Plato();
-		Reserva reserva = new Reserva();
-		Stock stock = new Stock();
+		Carta2 carta = new Carta2();
+		Ingrediente2 ingrediente = new Ingrediente2();
+		Menu2 menu = new Menu2();
+		Plato2 plato = new Plato2();
+		Reserva2 reserva = new Reserva2();
+		Stock2 stock = new Stock2();
 		
 		cartaRepo.save(carta);
 		ingredienteRepo.save(ingrediente);

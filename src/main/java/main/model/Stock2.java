@@ -14,7 +14,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="stock")
-public class Stock {
+public class Stock2 {
 	
 	@Id
 	@Column(name = "id_stock_ingrediente")
@@ -22,7 +22,7 @@ public class Stock {
 	
 	@OneToOne
 	@PrimaryKeyJoinColumn(name = "id_stock_ingrediente", referencedColumnName = "id_ingrediente")
-	private Ingrediente ingrediente;
+	private Ingrediente2 ingrediente;
 	
 	@Column(name = "cantidad_disponible")
 	private int cantidad_disponible;
@@ -38,11 +38,11 @@ public class Stock {
 		this.id = id;
 	}
 
-	public Ingrediente getIngrediente() {
+	public Ingrediente2 getIngrediente() {
 		return ingrediente;
 	}
 
-	public void setIngrediente(Ingrediente ingrediente) {
+	public void setIngrediente(Ingrediente2 ingrediente) {
 		this.ingrediente = ingrediente;
 	}
 

@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "ingredientes")
-public class Ingrediente {
+public class Ingrediente2 {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,7 +34,7 @@ public class Ingrediente {
 	private boolean lactosa;
 
 	@OneToOne
-	private Stock stock;
+	private Stock2 stock;
 	
 //	@ManyToOne
 //	@JoinColumn(name="id_almacen", nullable = false)

@@ -1,21 +1,28 @@
 package main.model;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
 
-public class Menu {
+@Entity
+@Table(name="menus")
+public class Menu2 {
 	
 	//De los platos disponibles (Carta) unos pocos (menu)
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
 	
 	@OneToOne
 	@PrimaryKeyJoinColumn(name = "id", referencedColumnName = "id_carta")
-	private Carta cartamenu;
+	private Carta2 cartamenu;
 	
 	@Column(name = "nombre")
 	private String nombre;
@@ -37,11 +44,11 @@ public class Menu {
 		this.id = id;
 	}
 
-	public Carta getCartaMenu() {
+	public Carta2 getCartaMenu() {
 		return cartamenu;
 	}
 
-	public void setCartaMenu(Carta carta) {
+	public void setCartaMenu(Carta2 carta) {
 		this.cartamenu = carta;
 	}
 

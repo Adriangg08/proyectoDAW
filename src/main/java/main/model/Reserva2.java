@@ -22,7 +22,7 @@ enum Estado {
 
 @Entity
 @Table(name="reservas")
-public class Reserva {
+public class Reserva2 {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -52,7 +52,7 @@ public class Reserva {
 			joinColumns = {@JoinColumn(name = "id_reserva")}, 
 			inverseJoinColumns = {@JoinColumn(name = "id_plato")}
 		)
-	private Set<Plato> platos;
+	private Set<Plato2> platos;
 
 	public int getId() {
 		return id;
@@ -110,11 +110,11 @@ public class Reserva {
 		this.fecha_reserva = fecha_reserva;
 	}
 
-	public Set<Plato> getPlatos() {
+	public Set<Plato2> getPlatos() {
 		return platos;
 	}
 
-	public void setPlatos(Set<Plato> platos) {
+	public void setPlatos(Set<Plato2> platos) {
 		this.platos = platos;
 	}
 	
