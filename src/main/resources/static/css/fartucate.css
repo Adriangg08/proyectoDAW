@@ -1,6 +1,6 @@
 body  {
     background-color: var(--fondo);
-    background-image: url(/imagenes/fondoMosaico.jpeg);
+    background-image: url(../img/fondoMosaico.jpeg);
     background-repeat: none;
     background-attachment: fixed; 
 }

@@ -5,56 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>El Fartuquin</title>
-    <link rel="stylesheet" href="/estilosGenerales/normalize.css">
-    <link rel="stylesheet" href="/estilosGenerales/carrusel.css">
-    <link rel="stylesheet" href="/estilosGenerales/menu.css">
-    <link rel="stylesheet" href="premios.css">
-    <link rel="stylesheet" href="/estilosGenerales/darkMode.css">
-    <link rel="stylesheet" href="/estilosGenerales/footer.css">
-    <script src="/scripts/menu.js"></script>
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/carrusel.css">
+    <link rel="stylesheet" href="../css/menu.css">
+    <link rel="stylesheet" href="../css/premios.css">
+    <link rel="stylesheet" href="../css/darkMode.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <script src="../js/menu.js"></script>
     <script src="https://kit.fontawesome.com/fb2a479feb.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
-    <!--Menu lateral-->
-
-    <section class="menu">
-
-      <section class="menuLogo">
-          <a href="/index/index.html"><img src="/imagenes/logoNegro.jpeg" alt=""></a>
-      </section>
-
-      <section class="menuLista">
-          <nav>
-              <ul>
-                  <li><a href="/carta/carta.html">Carta</a></li>
-                  <li><a href="/premios/premios.html">Premios</a></li>
-                  <li id="li-desplegable">
-                      <a onclick="toggleMenu()" href="#">Fartucate</a>
-                      <ul id="menuLista-desplegable">
-                          <li><a href="/fartucate/fartucate.html">Pide tu comida</a></li>
-                          <li><a href="/reserva-mesa/mesa.html">Reserva tu mesa</a></li>
-                      </ul>
-                  </li>
-                  <li><a href="/contacto/contacto.html">Contacto</a></li>
-              </ul>
-          </nav>
-      </section>
-
-      <!-- <section class="menuLogIn">
-          <form action="" method="post">
-              <input type="text" placeholder="Usuario">
-              <input type="text" placeholder="Contraseña">
-          </form>
-      </section> -->
-
-      <section id="btn-oscuro-container">
-          <section id="btn-oscuro">
-              <div id="btn-oscuro-bola"></div>
-          </section>
-      </section>
-
-  </section>
+	<section th:insert="menu::menu"></section>
 
     <section class="pagina">
 
@@ -73,7 +35,7 @@
                 <!-- Contenedor de cada porcion-->
                 <ul class="slides-container" id="slides-container">
                   <li class="slide">
-                      <img src="/imagenes/premio1.jpeg" alt="">
+                      <img src="../img/premio1.jpeg" alt="">
                       <section class="infoPremio">
                         <h1>#1 Ranking Celicidad 2022</h1>
                         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum eos excepturi eum deleniti! Neque deserunt, optio cum repudiandae mollitia fugit debitis eos in illum natus, asperiores quisquam aliquam earum ipsa.</p>
@@ -81,7 +43,7 @@
                       </section>
                   </li>
                   <li class="slide">
-                    <img src="/imagenes/premio2.jpg" alt="">
+                    <img src="../img/premio2.jpg" alt="">
                     <section class="infoPremio">
                       <h1>“orgullosos” la “Mención especial del Antroxu”</h1>
                       <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum eos excepturi eum deleniti! Neque deserunt, optio cum repudiandae mollitia fugit debitis eos in illum natus, asperiores quisquam aliquam earum ipsa.</p>
@@ -89,7 +51,7 @@
                     </section>
                   </li>
                   <li class="slide">
-                    <img src="/imagenes/premio3.jpeg" alt="">
+                    <img src="../img/premio3.jpeg" alt="">
                     <section class="infoPremio">
                       <h1>Precio nacional gastronomia</h1>
                       <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum eos excepturi eum deleniti! Neque deserunt, optio cum repudiandae mollitia fugit debitis eos in illum natus, asperiores quisquam aliquam earum ipsa.</p>
@@ -97,7 +59,7 @@
                     </section>
                   </li>
                   <li class="slide">
-                    <img src="/imagenes/premio4.jpeg" alt="">
+                    <img src="../img/premio4.jpeg" alt="">
                     <section class="infoPremio">
                       <h1>Premios FACE 2018</h1>
                       <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum eos excepturi eum deleniti! Neque deserunt, optio cum repudiandae mollitia fugit debitis eos in illum natus, asperiores quisquam aliquam earum ipsa.</p>
@@ -106,14 +68,14 @@
                   </li>
                 </ul>
             </section>
-            <script src="/scripts/carrusel.js"></script>
+            <script src="../js/carrusel.js"></script>
         </section>
 
         <!--Premios-->
 
         <section class="container">
           <section id="premio1" class="premio">
-            <img src="/imagenes/premio1.jpeg" alt="">
+            <img src="../img/premio1.jpeg" alt="">
             <section class="infoPremio">
               <h1>#1 Ranking Celicidad 2022</h1>
               <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum eos excepturi eum deleniti! Neque deserunt, optio cum repudiandae mollitia fugit debitis eos in illum natus, asperiores quisquam aliquam earum ipsa.</p>
@@ -125,7 +87,7 @@
 
         <section class="container">
           <section id="premio2" class="premio">
-            <img src="/imagenes/premio2.jpg" alt="">
+            <img src="../img/premio2.jpg" alt="">
             <section class="infoPremio">
               <h1>#1 Ranking Celicidad 2022</h1>
               <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum eos excepturi eum deleniti! Neque deserunt, optio cum repudiandae mollitia fugit debitis eos in illum natus, asperiores quisquam aliquam earum ipsa.</p>
@@ -137,7 +99,7 @@
 
         <section class="container">
           <section id="premio3" class="premio">
-            <img src="/imagenes/premio3.jpeg" alt="">
+            <img src="../img/premio3.jpeg" alt="">
             <section class="infoPremio">
               <h1>#1 Ranking Celicidad 2022</h1>
               <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum eos excepturi eum deleniti! Neque deserunt, optio cum repudiandae mollitia fugit debitis eos in illum natus, asperiores quisquam aliquam earum ipsa.</p>
@@ -149,7 +111,7 @@
 
         <section class="container">
           <section id="premio4" class="premio">
-            <img src="/imagenes/premio4.jpeg" alt="">
+            <img src="../img/premio4.jpeg" alt="">
             <section class="infoPremio">
               <h1>#1 Ranking Celicidad 2022</h1>
               <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum eos excepturi eum deleniti! Neque deserunt, optio cum repudiandae mollitia fugit debitis eos in illum natus, asperiores quisquam aliquam earum ipsa.</p>
@@ -159,54 +121,8 @@
           </section>
         </section>
 
-        <footer>
-          <div class="column">
-              <h4>Dónde nos encontrarás</h4>
-              <span> Fartuquín</span>
-              <span>Carpio 19 y Oscura 20</span>
-              <span>33009 - Oviedo</span>
-              <span>España</span>
-          </div>
-          <div class="column">
-              <h4>Contacto</h4>
-              <span>Si deseas contactar con nosotros escríbenos un email o llámanos por teléfono:</span>
-              <a href="#">elfartuquin@gmail.com</a>
-              <span>+34 985.229.971</span>
-          </div>
-          <div class="column">
-              <h4>Horario de apertura</h4>
-              <span>Lunes a viernes de 12:00 a 16:00 y de 19:30 a 24:00</span>
-              <span>Sábados y festivos de 13:00 a 16:00 y de 19:30 a 24:00</span>
-              <span>Los domingos descansamos</span>
-          </div>
-          <div class="column">
-              <h4>Social Media</h4>
-                  <div class="textwidget custom-html-widget">
-                      <p style="font-size: 28px; line-height: 28px;">
-                          <a style="color: #bfb0a9;" href="#"><i class="icon-facebook-circled"></i></a>
-                          <a style="color: #bfb0a9;" href="#"><i class="icon-gplus-circled"></i></a>
-                          <a style="color: #bfb0a9;" href="#"><i class="icon-twitter-circled"></i></a>
-                          <a style="color: #bfb0a9;" href="#"><i class="icon-pinterest-circled"></i></a>
-                          <a style="color: #bfb0a9;" href="#"><i class="icon-linkedin-circled"></i></a>
-                      </p>
-                  </div>
-              </div>
-          <div class="column">
-              <h4>Legal</h4>
-                  <ul>
-                      <li class="page_item page-item-179">
-                          <a href="https://elfartuquin.es/aviso-legal/">Aviso Legal</a>
-                      </li>
-                      <li class="page_item page-item-2633">
-                          <a href="/index/index.html">Inicio</a>
-                      </li>
-                      <li class="page_item page-item-174">
-                          <a href="https://elfartuquin.es/politica-de-privacidad/">Política de Privacidad</a>
-                      </li>
-                  </ul>       
-          </div>
-      </footer>
+        <footer th:insert="footer::footer"></footer>
     </section>
-    <script src="/scripts/darkmode.js"></script>
+    <script src="../js/darkmode.js"></script>
 </body>
 </html>

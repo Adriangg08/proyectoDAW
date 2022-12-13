@@ -1,0 +1,31 @@
+
+<section th:fragment="menu" class="menu">
+
+      <section class="menuLogo">
+          <a href="/"><img src="../img/logoNegro.jpeg" alt=""></a>
+      </section>
+
+      <section class="menuLista">
+          <nav>
+              <ul>
+                  <li><a href="/carta">Carta</a></li>
+                  <li><a href="/premios">Premios</a></li>
+                  <li id="li-desplegable">
+                      <a onclick="toggleMenu()" href="#">Fartucate</a>
+                      <ul id="menuLista-desplegable">
+                          <li><a href="/fartucate">Pide tu comida</a></li>
+                          <li><a href="/reserva-mesa">Reserva tu mesa</a></li>
+                      </ul>
+                  </li>
+                  <li><a href="/contacto">Contacto</a></li>
+              </ul>
+          </nav>
+      </section>
+
+      <section id="btn-oscuro-container">
+          <section id="btn-oscuro">
+              <div id="btn-oscuro-bola"></div>
+          </section>
+      </section>
+
+</section>
