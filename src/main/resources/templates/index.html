@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Fartuquin</title>
+    <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1.7.8/glider.css">-->
+    <link rel="stylesheet" th:href="@{/static/css/normalize.css}" href="../static/css/normalize.css" type="text/css" media="all">
+    <link rel="stylesheet" th:href="@{/static/css/index.css}" href="../static/css/index.css" type="text/css" media="all">
+    <link rel="stylesheet" th:href="@{/static/css/carrusel.css}" href="../static/css/carrusel.css" type="text/css" media="all">
+    <link rel="stylesheet" th:href="@{/static/css/menu.css}" href="../static/css/menu.css" type="text/css" media="all">
+    <link rel="stylesheet" th:href="@{/static/css/darkMode.css}" href="../static/css/darkmode.css" type="text/css" media="all">
+    <link rel="stylesheet" th:href="@{/static/css/footer.css}" href="../static/css/footer.css" type="text/css" media="all">
+    <!--<script th:src="@{/static/js/menu.js}" src="../static/js/menu.js"></script>
+    <script src="https://kit.fontawesome.com/fb2a479feb.js" crossorigin="anonymous"></script>-->
+</head>
+<body>
+
+    <!--Menu lateral-->
+    <section class="menu">
+
+      <section class="menuLogo">
+          <a href="/index/index.html"><img src="/imagenes/logoNegro.jpeg" alt=""></a>
+      </section>
+
+      <section class="menuLista">
+          <nav>
+              <ul>
+                  <li><a href="/carta/carta.html">Carta</a></li>
+                  <li><a href="/premios/premios.html">Premios</a></li>
+                  <li id="li-desplegable">
+                      <a onclick="toggleMenu()" href="#">Fartucate</a>
+                      <ul id="menuLista-desplegable">
+                          <li><a href="/fartucate/fartucate.html">Pide tu comida</a></li>
+                          <li><a href="/reserva-mesa/mesa.html">Reserva tu mesa</a></li>
+                      </ul>
+                  </li>
+                  <li><a href="/contacto/contacto.html">Contacto</a></li>
+              </ul>
+          </nav>
+      </section>
+
+      <!-- <section class="menuLogIn">
+          <form action="" method="post">
+              <input type="text" placeholder="Usuario">
+              <input type="text" placeholder="Contraseña">
+          </form>
+      </section> -->
+
+      <section id="btn-oscuro-container">
+          <section id="btn-oscuro">
+              <div id="btn-oscuro-bola"></div>
+          </section>
+      </section>
+
+  </section>
+
+    <section class="pagina">
+
+      <!-- Carrusel -->
+        <section class="carrusel">
+            <section class="slider-wrapper">
+                <button class="slide-arrow" id="slide-arrow-prev">
+                  &#8249;
+                </button>
+                <button class="slide-arrow" id="slide-arrow-next">
+                  &#8250;
+                </button>
+                <ul class="slides-container" id="slides-container">
+                  <li class="slide">
+                      <img src="/imagenes/Flor de Alcachofa con huevo de codorniz y jamón ibérico.jpeg" alt="">
+                  </li>
+                  <li class="slide">
+                    <img src="/imagenes/Pastel de queso asturianos con mermelada de zanahoria y dados de sidra.jpeg" alt="">
+                  </li>
+                  <li class="slide">
+                    <img src="/imagenes/Solomillo de cerdo relleno de queso la peral con albarda de panceta.jpeg" alt="">
+                  </li>
+                  <li class="slide">
+                    <img src="/imagenes/Tarta chocolate.jpeg" alt="">
+                  </li>
+                </ul>
+              </section>
+              <script src="/scripts/carrusel.js"></script>
+        </section>
+
+        <!--Pq el fartu-->
+        <section class="motivos">
+            <h1>Porque el Fartuquin?</h1>
+            <div class="motivos-fotos">
+              <img src="/imagenes/motivo1.jpg" alt="">
+              <img src="/imagenes/barra.jpeg" alt="">
+              <img src="/imagenes/madera.jpeg" alt="">
+            </div>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta cupiditate velit tempore! Placeat beatae nemo quis, quia corrupti vero suscipit iste voluptate minima quas culpa laboriosam harum perferendis adipisci officia quibusdam officiis optio provident modi nesciunt blanditiis rerum at. Quos eveniet maxime animi nihil placeat vero officiis ullam blanditiis aliquam, saepe reprehenderit fuga adipisci ipsum beatae at rerum soluta consequuntur? Saepe eum voluptas, inventore autem quod sed fugiat explicabo recusandae quas qui quam ducimus sint labore velit blanditiis. Dolore ipsam itaque, maiores, quos libero dolores impedit delectus quisquam quod dicta iste quaerat, ipsum asperiores explicabo! Ipsum ullam ea nesciunt delectus.
+            </p>
+        </section>
+
+        <!--Recomendaciones-->
+        <section class="recomendaciones">
+          <h1>Recomendaciones</h1>
+            <div class="recomendaciones-fotos">
+              <img src="/imagenes/Tortos con picadillo.jpeg" alt="">
+              <img src="/imagenes/Cecina de Astorga con aceite de oliva.jpeg" alt="">
+              <img src="/imagenes/Pote asturiano.jpeg" alt="">
+            </div>
+          </h1>
+        </section>
+
+        <footer>
+          <div class="column">
+              <h4>Dónde nos encontrarás</h4>
+              <span> Fartuquín</span>
+              <span>Carpio 19 y Oscura 20</span>
+              <span>33009 - Oviedo</span>
+              <span>España</span>
+          </div>
+          <div class="column">
+              <h4>Contacto</h4>
+              <span>Si deseas contactar con nosotros escríbenos un email o llámanos por teléfono:</span>
+              <a href="#">elfartuquin@gmail.com</a>
+              <span>+34 985.229.971</span>
+          </div>
+          <div class="column">
+              <h4>Horario de apertura</h4>
+              <span>Lunes a viernes de 12:00 a 16:00 y de 19:30 a 24:00</span>
+              <span>Sábados y festivos de 13:00 a 16:00 y de 19:30 a 24:00</span>
+              <span>Los domingos descansamos</span>
+          </div>
+          <div class="column">
+              <h4>Social Media</h4>
+                  <div class="textwidget custom-html-widget">
+                      <p style="font-size: 28px; line-height: 28px;">
+                          <a style="color: #bfb0a9;" href="#"><i class="icon-facebook-circled"></i></a>
+                          <a style="color: #bfb0a9;" href="#"><i class="icon-gplus-circled"></i></a>
+                          <a style="color: #bfb0a9;" href="#"><i class="icon-twitter-circled"></i></a>
+                          <a style="color: #bfb0a9;" href="#"><i class="icon-pinterest-circled"></i></a>
+                          <a style="color: #bfb0a9;" href="#"><i class="icon-linkedin-circled"></i></a>
+                      </p>
+                  </div>
+              </div>
+          <div class="column">
+              <h4>Legal</h4>
+                  <ul>
+                      <li class="page_item page-item-179">
+                          <a href="https://elfartuquin.es/aviso-legal/">Aviso Legal</a>
+                      </li>
+                      <li class="page_item page-item-2633">
+                          <a href="/index/index.html">Inicio</a>
+                      </li>
+                      <li class="page_item page-item-174">
+                          <a href="https://elfartuquin.es/politica-de-privacidad/">Política de Privacidad</a>
+                      </li>
+                  </ul>       
+          </div>
+      </footer>
+    </section>
+    <script src="/scripts/darkmode.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/glider-js@1.7.8/glider.min.js"></script>
+</body>
+</html>

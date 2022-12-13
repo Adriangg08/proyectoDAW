@@ -1,0 +1,26 @@
+footer {
+    background-color: var(--fondo-cosas);
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    width: 18%;
+    align-items: center;
+    color: var(--texto);
+}
+
+.column span {
+    padding: 2%;
+    display: block;
+}
+
+.column ul {
+    list-style: none;
+}
+
+.column a {
+    text-decoration: none;
+}

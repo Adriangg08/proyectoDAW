@@ -1,0 +1,12 @@
+body.dark {
+    background-color: black;
+    color: white;
+}
+
+:root {
+    --fondo: white;
+    --texto: black;
+    --fondo-cosas: rgba(255, 255, 255, 0.938);
+    --platos: rgb(231, 229, 229);
+    --menu: rgb(119, 20, 20);
+}

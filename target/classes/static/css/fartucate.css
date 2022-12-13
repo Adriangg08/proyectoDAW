@@ -1,0 +1,111 @@
+body  {
+    background-color: var(--fondo);
+    background-image: url(/imagenes/fondoMosaico.jpeg);
+    background-repeat: none;
+    background-attachment: fixed; 
+}
+
+h1 {
+    margin: 0;
+    color: var(--texto);
+}
+
+.container {
+    display: flex;
+}
+
+main {
+    width: 70%;
+    padding: 0 5%;
+}
+
+aside {
+    width: 30%;
+    padding: 0 3%;
+}
+
+.categorias {
+    margin: 5% 0;
+}
+
+.lista-categorias {
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+}
+
+/* .lista-categorias>li {
+    
+} */
+
+.lista-categorias>li>a {
+    text-decoration: none;
+    color: var(--texto);
+    padding: 5px;
+    background-color: var(--fondo-cosas);
+    border-radius: 10px;
+}
+
+.lista-categorias>li>a:hover {
+    background-color: rgba(122, 3, 3, 0.623);
+    color: white;
+}
+
+.plato {
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+    margin: 1%;
+    background-color: var(--fondo-cosas);
+    cursor: pointer;
+}
+
+.platos span{
+    /* color: var(--texto); */
+    color: var(--texto);
+}
+
+.plato>span {
+    margin: 10px;
+}
+
+.platos-container {
+    background-color: var(--platos);
+    padding: 2% 4%;
+    margin-bottom: 4%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+}
+
+.pedido {
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+    position: sticky;
+    top: 20%;
+    height: fit-content;
+    background-color: var(--platos);
+}
+
+.pedido span {
+    color: var(--texto);
+}
+
+.pedido>h1 {
+    padding: 4% 2%;
+}
+
+#tabla-pedidos {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#tabla-pedidos tr{
+    margin: 0% 4%;
+}
+
+#tabla-pedidos td {
+    text-align: center;
+}
+
+#tabla-pedidos tbody {
+    background-color: var(--fondo-cosas);
+}
