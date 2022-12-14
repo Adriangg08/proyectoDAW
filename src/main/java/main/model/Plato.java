@@ -35,10 +35,13 @@ public class Plato {
 	private String descripcion;
 	
 	@Column(name = "disponible")
-	private boolean disponible;
+	private boolean disponible = false;
 	
 	@Column(name = "precio")
 	private Double precio;
+	
+	@Column(name="url")
+	private String url;
 	
 	@ManyToMany(mappedBy = "platos",cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER)
 	private Set<Reserva> reservas;
@@ -65,6 +68,7 @@ public class Plato {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+		url = nombre;
 	}
 
 	public String getAlergenos() {
@@ -106,6 +110,36 @@ public class Plato {
 	public void setReservas(Set<Reserva> reservas) {
 		this.reservas = reservas;
 	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
 	
+	public Carta persistCarta(Carta c) {
+		c.setId(getId());
+		c.setDescripcion(getDescripcion());
+		c.setNombre(getNombre());
+		c.setPrecio(getPrecio());
+		c.setAlergenos(getAlergenos());
+		c.setUrl(url);
+		
+		return c;
+	}
+	
+	public Carta persist() {
+		Carta c = new Carta();
+		c.setId(getId());
+		c.setDescripcion(getDescripcion());
+		c.setNombre(getNombre());
+		c.setPrecio(getPrecio());
+		c.setAlergenos(getAlergenos());
+		c.setUrl(url);
+		
+		return c;
+	}
 	
 }

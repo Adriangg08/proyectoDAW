@@ -15,9 +15,6 @@ import javax.persistence.Table;
 @Table(name="cartas")
 public class Carta {
 
-	//Platos disponibles
-	
-	//La id es la del plato
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
@@ -41,6 +38,9 @@ public class Carta {
 	
 	@Column(name = "precio")
 	private Double precio;
+	
+	@Column(name="url")
+	private String url;
 
 	public Carta() {
 		
@@ -101,6 +101,13 @@ public class Carta {
 	public void setPrecio(Double precio) {
 		this.precio = precio;
 	}
-	
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
 	
 }

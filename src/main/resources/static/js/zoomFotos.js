@@ -47,10 +47,10 @@ const carta = document.querySelector(".carta");
 // }
 
 function check() {
-    let fotoZoom = this.children[2];
+    let fotoZoom = this.children[4];
 
     console.log("primera");
-    console.log(fotoZoom.style.display);
+    console.log(fotoZoom);
     
     if (fotoZoom.style.display == "" || fotoZoom.style.display == "none") {
         fotoZoom.style.display = "flex";
@@ -71,4 +71,4 @@ function check() {
 
 for (var i = 0; i < items.length; i++) {
     items[i].addEventListener("click", check);
-}
+	}

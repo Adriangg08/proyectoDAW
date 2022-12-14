@@ -30,41 +30,55 @@ public class CartaController {
 	
 	@GetMapping(value = {"","/"})
 	String homecartas(Model model) {
+		
+		ArrayList<Plato> listaPlatos = (ArrayList<Plato>) platoRepo.findAll();
+		
+		for (Plato p: listaPlatos) {
+
+			if(p.isDisponible()) {
+				cartaRepo.save(p.persist());
+			}
+			
+		}
+  		
 		ArrayList<Carta> listaCartas = (ArrayList<Carta>) cartaRepo.findAll();
 		
 		model.addAttribute("listaCartas",listaCartas);
+		model.addAttribute("listaPlatos",listaPlatos);
 		model.addAttribute("cartaNueva",new Carta());
-		model.addAttribute("cartaEdit",new Carta());
+		model.addAttribute("platoEdit",new Plato());
 		
-		return "cartas";
+		return "carta";
 	}
 	
 	/*Añadir*/
 	@PostMapping("/add/")
 	public String addCarta(@ModelAttribute("cartaNueva") Carta cartaNueva, BindingResult bindingResult) {
 
-		cartaRepo.save(cartaNueva);
+		Plato p = platoRepo.findById(cartaNueva.getId()).get();
+		p.setDisponible(true);
+		platoRepo.save(p);
 		
 		return "redirect:/carta";
 	}
 	
 	/*Editar por Id*/
 	@PostMapping("/edit/{id}")
-	public String editarCarta(@PathVariable Integer id,@ModelAttribute("cartaEdit") Carta cartaEdit, BindingResult bindingResult) {
+	public String editarCarta(@PathVariable Integer id,@ModelAttribute("platoEdit") Plato platoEdit, BindingResult bindingResult) {
 		
 		/*Busco la carta a editar en la BBDD*/
-		Carta cartaEdited = cartaRepo.findById(id).get();
+		Plato platoEdited = platoRepo.findById(id).get();
 		
 		/*Edito cada atributo*/
-		cartaEdited.setNombre(cartaEdit.getNombre());
-		cartaEdited.setDescripcion(cartaEdit.getDescripcion());
-		cartaEdited.setAlergenos(cartaEdit.getAlergenos());
-		cartaEdited.setPrecio(cartaEdit.getPrecio());
-//		cartaEdited.setPlato(cartaEdit.getPlato());
-//		cartaEdited.setMenu(cartaEdited.getMenu());
+		platoEdited.setNombre(platoEdit.getNombre());
+		platoEdited.setDescripcion(platoEdit.getDescripcion());
+		platoEdited.setAlergenos(platoEdit.getAlergenos());
+		platoEdited.setPrecio(platoEdit.getPrecio());
+//		platoEdited.setPlato(platoEdit.getPlato());
+//		platoEdited.setMenu(platoEdited.getMenu());
 		
 		/*Persist*/
-		cartaRepo.save(cartaEdited);
+		platoRepo.save(platoEdited);
 		
 		return "redirect:/carta";
 	}
@@ -74,13 +88,17 @@ public class CartaController {
 	public String deleteCarta(@PathVariable Integer id, Model model) {
 		
 		/*Busca la carta a borrar y sus referencias*/
-		Carta cartaBorrar = cartaRepo.findById(id).get();
+//		Carta cartaBorrar = cartaRepo.findById(id).get();
 //		Plato platoBorrar = platoRepo.findById(id).get();
 //		Falta el menu
 		
 		/*Borrado*/
-		cartaRepo.delete(cartaBorrar);
+//		cartaRepo.delete(cartaBorrar);
 //		platoRepo.delete(platoBorrar);
+		
+		Plato p = platoRepo.findById(id).get();
+		p.setDisponible(false);
+		platoRepo.save(p);
 		
 		return "redirect:/carta";
 	}
