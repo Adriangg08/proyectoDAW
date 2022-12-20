@@ -64,7 +64,7 @@
 	    <version>1.0.2.Final</version>
 	</dependency>
 
-<!--
+
 	<dependency>
 	  <groupId>org.thymeleaf.extras</groupId>
 	  <artifactId>thymeleaf-extras-springsecurity5</artifactId>
@@ -79,7 +79,7 @@
 	  <artifactId>spring-security-test</artifactId>
 	  <scope>test</scope>
 	</dependency>
-	-->
+
 
 
 
