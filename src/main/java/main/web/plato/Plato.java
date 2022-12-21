@@ -1,4 +1,4 @@
-package main.model;
+package main.web.plato;
 
 import java.util.Set;
 
@@ -12,6 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import main.web.carta.Carta;
+import main.web.reserva.Reserva;
 
 @Entity
 @Table(name = "platos")

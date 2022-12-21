@@ -1,9 +1,7 @@
-package main.model;
+package main.web.menu;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,21 +9,22 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
-@Entity
-@Table(name="cartas")
-public class Carta {
+import main.web.carta.Carta;
 
+@Entity
+@Table(name="menus")
+public class Menu {
+	
+	//De los platos disponibles (Carta) unos pocos (menu)
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
 	
 	@OneToOne
-	@PrimaryKeyJoinColumn(name = "id", referencedColumnName = "id_plato")
-	private Plato plato;
-	
-	@OneToOne(mappedBy = "cartamenu", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-	private Menu menu;
+	@PrimaryKeyJoinColumn(name = "id", referencedColumnName = "id_carta")
+	private Carta cartamenu;
 	
 	@Column(name = "nombre")
 	private String nombre;
@@ -38,14 +37,7 @@ public class Carta {
 	
 	@Column(name = "precio")
 	private Double precio;
-	
-	@Column(name="url")
-	private String url;
 
-	public Carta() {
-		
-	}
-	
 	public int getId() {
 		return id;
 	}
@@ -54,20 +46,12 @@ public class Carta {
 		this.id = id;
 	}
 
-	public Plato getPlato() {
-		return plato;
+	public Carta getCartaMenu() {
+		return cartamenu;
 	}
 
-	public void setPlato(Plato plato) {
-		this.plato = plato;
-	}
-
-	public Menu getMenu() {
-		return menu;
-	}
-
-	public void setMenu(Menu menu) {
-		this.menu = menu;
+	public void setCartaMenu(Carta carta) {
+		this.cartamenu = carta;
 	}
 
 	public String getNombre() {
@@ -101,13 +85,6 @@ public class Carta {
 	public void setPrecio(Double precio) {
 		this.precio = precio;
 	}
-
-	public String getUrl() {
-		return url;
-	}
-
-	public void setUrl(String url) {
-		this.url = url;
-	}
+	
 	
 }

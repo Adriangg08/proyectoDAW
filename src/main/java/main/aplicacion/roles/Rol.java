@@ -1,9 +1,11 @@
-package main.model;
+package main.aplicacion.roles;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.*;
+
+import main.aplicacion.usuario.Usuario;
 
 @Entity
 @Table(name = "rol")

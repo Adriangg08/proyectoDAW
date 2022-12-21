@@ -1,4 +1,4 @@
-package main.model;
+package main.aplicacion.usuario;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -12,6 +12,8 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import main.aplicacion.roles.Rol;
 
 @Entity
 @Table(name = "usuarios")
@@ -27,8 +29,8 @@ public class Usuario implements UserDetails{
 	@Column(name = "id")
 	private int id;
 	
-	@Column(name = "nombre", unique = true)
-	private String nombre;
+	@Column(name = "username", unique = true)
+	private String username;
 	
 	@Column(name= "password")
 	private String password;
@@ -53,13 +55,14 @@ public class Usuario implements UserDetails{
 	public void setId(int id) {
 		this.id = id;
 	}
-
-	public String getNombre() {
-		return nombre;
+	
+	@Override
+	public String getUsername() {
+		return username;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	
 	/*Si uso username deberia ponerle al getUsername() la etiqueta @Override para q utilize este metodo y no el de Spring*/
@@ -85,11 +88,6 @@ public class Usuario implements UserDetails{
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub
 		return this.roles.stream().map(role -> new SimpleGrantedAuthority(role.getNombre())).collect(Collectors.toList());
-	}
-
-	public String getUsername() {
-		// TODO Auto-generated method stub
-		return nombre;
 	}
 
 	public boolean isAccountNonExpired() {

@@ -1,7 +1,6 @@
-package main.daos;
+package main.web.plato;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import main.model.Plato;
 
 public interface PlatoRepo extends JpaRepository<Plato, Integer>{
 

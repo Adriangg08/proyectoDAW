@@ -1,8 +1,6 @@
-package main.daos;
+package main.web.carta;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import main.model.Carta;
 
 public interface CartaRepo extends JpaRepository<Carta, Integer>{
 

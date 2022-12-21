@@ -1,7 +1,6 @@
-package main.daos;
+package main.web.menu;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import main.model.Menu;
 
 public interface MenuRepo extends JpaRepository<Menu, Integer>{
 

@@ -1,7 +1,6 @@
-package main.daos;
+package main.aplicacion.ingrediente;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import main.model.Ingrediente;
 
 public interface IngredienteRepo extends JpaRepository<Ingrediente, Integer>{
 

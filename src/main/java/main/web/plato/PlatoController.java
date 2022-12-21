@@ -1,4 +1,4 @@
-package main.controller;
+package main.web.plato;
 
 import java.util.ArrayList;
 
@@ -11,9 +11,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import main.daos.PlatoRepo;
-import main.model.Plato;
 
 
 

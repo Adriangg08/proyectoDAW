@@ -3,9 +3,11 @@ package main;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import main.aplicacion.roles.Rol;
+import main.aplicacion.usuario.Usuario;
 import main.daos.GenericDAO;
-import main.model.Carta;
-import main.model.Plato;
+import main.web.carta.Carta;
+import main.web.plato.Plato;
 
 @SpringBootApplication
 public class Main {
@@ -20,6 +22,25 @@ public class Main {
 //		c1.setPrecio(30.0);
 //
 //		cDao.insertarTJPA(c1);
+		
+//		GenericDAO<Usuario> uDAO = new GenericDAO<>(Usuario.class);
+//		
+//		Usuario u1 = new Usuario();
+//		
+//		GenericDAO<Rol> rDAO = new GenericDAO<>(Rol.class);
+//		
+//		Rol r1 = new Rol();
+//		
+//		u1.setNombre("adrian");
+//		u1.setPassword("1234");
+//		
+//		r1.setNombre("admin");
+//		
+//		r1.getUsuarios().add(u1);
+//		u1.getRoles().add(r1);
+//		
+//		uDAO.insertarTJPA(u1);
+//		rDAO.insertarTJPA(r1);
 		
 //		GenericDAO<Plato> pDao = new GenericDAO<Plato>(Plato.class);
 //		

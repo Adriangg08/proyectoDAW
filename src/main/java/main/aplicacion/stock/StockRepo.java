@@ -1,8 +1,6 @@
-package main.daos;
+package main.aplicacion.stock;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import main.model.Stock;
 
 
 public interface StockRepo extends JpaRepository<Stock, Integer>{

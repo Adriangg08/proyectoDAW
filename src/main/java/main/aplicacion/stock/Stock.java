@@ -1,4 +1,4 @@
-package main.model;
+package main.aplicacion.stock;
 
 import java.util.Set;
 
@@ -10,6 +10,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+
+import main.aplicacion.ingrediente.Ingrediente;
 
 
 @Entity
