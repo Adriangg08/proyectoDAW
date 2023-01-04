@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link rel="stylesheet" href="../css/darkMode.css">
+	<link rel="stylesheet" href="../css/reservasApp.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+	<div th:insert="librerias::librerias"></div>
+</head>
+<body>
+
+
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top p-5">
+		  <div class="container">
+			  
+		    <a class="navbar-brand" href="#">
+				<img src="../img/logoNegro.jpeg" class="rounded img-fluid" width="250px"></img>
+			</a>
+			
+		    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		      <span class="navbar-toggler-icon"></span>
+		    </button>
+		    
+		    <div class="collapse navbar-collapse" id="navbarNav">
+		      <ul class="navbar-nav">
+				  
+		        <li class="nav-item">
+		          <a class="nav-link " aria-current="page" href="/aplicacion/platos">Platos/Menu/Carta</a>
+		        </li>
+		        <li class="nav-item">
+		          <a class="nav-link" href="#">Stock</a>
+		        </li>
+		         <li class="nav-item">
+		          <a class="nav-link active" href="/aplicacion/reservas">Reservas</a>
+		        </li>
+		        <li class="nav-item">
+		          <a class="nav-link" href="#">Caja</a>
+		        </li>
+		        <li class="nav-item">
+		          <a class="nav-link" href="#">Previsiones</a>
+		        </li>
+		        
+		      </ul>
+		    </div>
+		    
+		  </div>
+		</nav>
+		
+		<div class="container">
+			
+			<h1>Reservas</h1>
+			
+			<table class="table table-hover">
+				<thead class="table-dark bg-info text-white">
+				
+					<tr>
+						<th>Nombre Reserva</th>
+						<th>A domicilio</th>
+						<th>Correo</th>
+						<th>Telefono</th>
+						<th>N personas</th>
+						<th>N celiacos</th>
+						<th>Comentarios adicionales</th>
+						<th>Fecha</th>
+						<th>Platos</th>
+						<th>Estado</th>
+						<th>Borrar</th>
+					</tr>
+				
+				</thead>
+				
+				<tbody>
+					
+					<tr th:each="reserva:${listaReservas}">
+
+						<td>
+
+							<a th:attr = "data-target='#modal-edit'+${reserva.getId()}" data-toggle = "modal" data-target = "#modal-edit" class = "btn btn-sm pointer"><span th:text = "${reserva.getNombre()}"></span></a>
+							
+						</td>
+						
+						<td>
+							
+							<div th:if="${reserva.isPara_llevar()}">
+								<i class="fa-solid fa-check"></i>
+							</div>
+							
+							<div th:if="${!reserva.isPara_llevar()}">
+								<i class="fa-solid fa-xmark"></i>
+							</div>
+							
+						</td>
+						
+						<td>
+							<span th:text = "${reserva.getMail()}"></span>
+						</td>
+						
+						<td>
+							<span th:text="${reserva.getTelefono()}"></span>
+						</td>
+						
+						<td>
+							<span th:text = "${reserva.getNum_personas()}"></span>
+						</td>
+						
+						<td>
+							<span th:text = "${reserva.getNum_celiacos()}"></span>
+						</td>
+						
+						<td>
+							<span th:text = "${reserva.getComentario()}"></span>
+						</td>
+						
+						<td>
+							<span th:text = "${reserva.getFecha_reserva()}"></span>
+						</td>
+						
+						<!--
+						<td th:each="plato:${listaPlatos}" th:if="${listaPlatos.empty()}">
+							<span th:text = "${plato.getNombre()}"></span>
+						</td>
+						-->
+						
+						<td>
+							<span th:text = "${reserva.getEstado()}"></span>
+						</td>
+						
+						<!--
+						<td>
+							Los data son para que funcione el js
+							
+							<a th:attr = "data-target='#modal-edit'+${reserva.getId()}" data-toggle = "modal" data-target = "#modal-edit" class = "btn btn-sm text-white pointer"><i class="fa-solid fa-pen"></i></a>
+							
+						</td>
+						-->
+						
+						<td>
+							<!--Los data son para que funcione el js-->
+							<a th:attr = "data-target='#modal-delete'+${reserva.getId()}" data-toggle = "modal" data-target = "#modal-delete" class = "btn btn-sm text-white pointer"><i class="fa-solid fa-trash"></i></a>
+						</td>
+			
+			<!--
+				MODAL EDIT NUEVO
+			-->
+			
+							
+					<div class="modal fade" th:id = "modal-edit+${reserva.getId()}" tabindex="-1" aria-labelledby="exampleModalXlLabel" style="display: none;" aria-hidden="true">
+					  
+						  <div class="modal-dialog modal-xl">
+						    
+							    <div class="modal-content">
+							      
+								      <div class="modal-header">
+										  
+									        <h1 class="modal-title fs-4" id="exampleModalXlLabel"><span th:text = "${reserva.getNombre()}"></span></h1>
+									        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+								        
+								      </div>
+								      
+								      <div class="modal-body">
+								       
+																		        	
+										<section id="book-a-table" class="book-a-table p-3">
+											
+										      <div class="container" data-aos="fade-up">
+										
+										        <div class="section-title">
+										          <h2>Editar reserva</h2>
+										        </div>
+										
+										        <form th:action="@{/aplicacion/reservas/edit/{id}(id=${reserva.getId()})}" th:object="${reservaEdit}" method="post" th:id= "formulario+${reserva.getId()}">
+			
+											          <div class="row">
+														  
+											            <div class="col-lg-4 col-md-6 form-group mt-3">
+														  <label for="nombre">Nombre: </label>
+											              <input type="text" th:field="*{nombre}" class="form-control" id="nombre" th:placeholder="${reserva.getNombre()}">
+											              <div class="validate"></div>
+											            </div>
+											            
+											            <div class="col-lg-4 col-md-6 form-group mt-3">
+														  <label for="mail">Correo electronico: </label>
+											              <input type="email" class="form-control" th:field="*{mail}" id="mail" th:placeholder="${reserva.getMail()}" data-rule="email" data-msg="Porfavor introduzca un correo valido">
+											              <div class="validate"></div>
+											            </div>
+											            
+											            <div class="col-lg-4 col-md-6 form-group mt-3">
+														  <label for="telefono">Numero de telefono: </label>
+											              <input type="tel" class="form-control" name="telefono" id="telefono" th:placeholder="${reserva.getTelefono()}" data-rule="minlen:9" data-msg="Porfavor introduzca un numero valido">
+											              <div class="validate"></div>
+											            </div>
+											            
+											            <!--Al tener th:field ignora el value-->
+											            <div class="col-lg-4 col-md-6 form-group mt-3">
+														  <label for="numPersonas">Numero de personas: </label>
+											              <input type="number" class="form-control" id="numPersonas" name="numPersonas" th:placeholder="${reserva.getNum_personas()}">
+											              <div class="validate"></div>
+											            </div>
+											            
+											            <div class="col-lg-4 col-md-6 form-group mt-3">
+														  <label for="numCeliacos">Numero de celiacos: </label>
+											              <input type="number" class="form-control" id="numCeliacos" name="numCeliacos" th:placeholder="${reserva.getNum_celiacos()}">
+											              <div class="validate"></div>
+											            </div>
+											            
+											            <div class="col-lg-4 col-md-6 form-group mt-3">
+														  <label for="fechaReserva">Fecha reserva: </label>
+											              <input type="date" class="form-control" th:field="*{fecha_reserva}" id="fechaReserva" th:placeholder="${reserva.getFecha_reserva()}">
+											              <div class="validate"></div>
+											            </div>
+											            
+											            <div class="col-lg-4 col-md-6 form-group mt-3">
+														  <label for="llevar">Para llevar?</label>
+											              <input type="checkbox" th:field="*{para_llevar}" id="llevar">
+											              <div class="validate"></div>
+											            </div>
+											            
+											          </div>
+											          
+											          <div class="form-group mt-3">
+											            <textarea class="form-control" th:field="*{comentario}" rows="5" th:placeholder="${reserva.getComentario()}"></textarea>
+											            <div class="validate"></div>
+											          </div>
+											          
+											          <!--Mensaje carga
+											          <div class="mb-3">
+											            <div class="loading">Loading</div>
+											            <div class="error-message"></div>
+											            <div class="sent-message">Your booking request was sent. We will call back or send an Email to confirm your reservation. Thank you!</div>
+											          </div>
+											          -->
+												  
+										        </form>
+										
+										      </div>
+										 </section>
+								        
+								      </div>
+								      
+								    <div class="modal-footer">
+												
+										<button class="btn btn-secondary btn-sm" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+										<input type="submit" value="Editar" class="btn btn-primary float-right" th:id= "formulario+${reserva.getId()}" th:form="formulario+${reserva.getId()}">
+														
+									</div>
+							      
+							    </div>
+						    
+						  </div>
+					  
+					</div>
+									
+
+			
+			<!--
+				FIN MODAL EDIT NUEVO
+			-->
+			
+			
+			<!-- 
+				________________________________MODAL DELETE__________________________________________
+			-->
+			
+				<div class = "modal fade" th:id = "modal-delete+${reserva.getId()}">
+							
+					<div class = "modal-dialog" role = "document">
+							
+						<div class = "modal-content">
+								
+							<div class = "modal-header" >
+									
+								<h4 class = "modal-title" id="exampleModalLabel">Eliminar</h4>
+								<button class = "cerrar btn btn-danger" type = "button" data-dismiss = "modal" aria-label="close">
+									<span aria-hidden = "true">x</span>
+								</button>
+										
+							</div>
+									
+							<div class = "modal-body">
+									
+								<p class = "error-text">Estas seguro de querer eliminar este reserva de la reserva: <strong><span th:text = "${reserva.getNombre()}"></span></strong></p>
+											
+							</div>
+											
+							<div class="modal-footer">
+												
+								<button class="btn btn-secondary btn-sm" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+								<a th:href="@{/aplicacion/reservas/delete/{id}(id=${reserva.getId()})}">
+									<span class= "btn btn-danger btn-sm" value="delete">Borrar</span>
+								</a>
+												
+							</div>
+										
+						</div>
+					</div>
+							
+				</div>
+			
+			<!-- 
+				________________________________FIN MODAL DELETE______________________________________
+			-->
+					</tr>
+			
+				</tbody>
+				
+			</table>
+			
+			<div class="col-2 float-right">
+			
+				<div class="p-5">
+				
+					<button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#crearMensaje">+</button>
+				
+				</div>
+			
+			</div>
+						
+			<a href="/carta" class="btn btn-primary">Carta</a>
+			
+		</div>
+		
+		
+		<!--
+			____________________________________________MODAL ADD_________________________________________
+		-->
+			
+			<div class = "modal fade" id = "crearMensaje">
+							
+							<div class = "modal-dialog modal-xl" role = "document">
+							
+								<div class = "modal-content">
+								
+									<div class = "modal-header" >
+									
+										<h4 class = "modal-title" id="exampleModalLabel">Hacer nueva reserva</h4>
+										<button class = "cerrar" type = "button" data-dismiss = "modal" aria-label="close">
+											<span aria-hidden = "true">x</span>
+										</button>
+										
+									</div>
+									
+									<div class = "modal-body">
+										
+										<!--Formulario nombre a editar-->
+										<form action="#" th:action="@{/aplicacion/reservas/add/}" th:object="${reservaNueva}" method="post" id="formularioAdd">
+											
+											<div th:insert="reservasForm::reservasForm"></div>
+											
+										</form>
+											
+									</div>
+											
+									<div class="modal-footer">
+												
+										<button class="btn btn-secondary btn-sm" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+										<input type="submit" value="Crear" class="btn btn-primary float-right" form="formularioAdd" >
+												
+									</div>
+										
+								</div>
+								
+							</div>
+							
+						</div>
+			
+			<!--
+				________________________________FIN MODAL ADD_______________________________________
+			-->
+
+</body>
+</html>

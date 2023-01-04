@@ -3,11 +3,11 @@ package main;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import main.aplicacion.roles.Rol;
-import main.aplicacion.usuario.Usuario;
+import main.aplicacion.plato.Plato;
+//import main.aplicacion.roles.Rol;
+//import main.aplicacion.usuario.Usuario;
 import main.daos.GenericDAO;
 import main.web.carta.Carta;
-import main.web.plato.Plato;
 
 @SpringBootApplication
 public class Main {

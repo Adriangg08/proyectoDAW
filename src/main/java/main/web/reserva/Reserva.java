@@ -15,7 +15,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import main.web.plato.Plato;
+import main.aplicacion.plato.Plato;
 
 
 enum Estado {
@@ -27,8 +27,17 @@ enum Estado {
 public class Reserva {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
+	
+	@Column(name = "nombre")
+	private String nombre;
+	
+	@Column(name = "telefono")
+	private int telefono;
+	
+	@Column(name = "mail")
+	private String mail;
 	
 	@Column(name = "num_personas")
 	private int num_personas;
@@ -55,6 +64,10 @@ public class Reserva {
 			inverseJoinColumns = {@JoinColumn(name = "id_plato")}
 		)
 	private Set<Plato> platos;
+
+	public Reserva() {
+		estado = Estado.PENDIENTE;
+	}
 
 	public int getId() {
 		return id;
@@ -118,6 +131,30 @@ public class Reserva {
 
 	public void setPlatos(Set<Plato> platos) {
 		this.platos = platos;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public int getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(int telefono) {
+		this.telefono = telefono;
+	}
+
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
 	}
 	
 	

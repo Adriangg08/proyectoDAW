@@ -1,0 +1,15 @@
+.btn {
+	background-color: var(--menu) !important;
+	border: none !important;
+	color: white !important;
+}
+
+.btn:hover {
+	scale: 1.1 !important;
+	background-color: var(--menu) !important;
+	color: white !important;
+}
+
+td, tr {
+	text-align: center;
+}

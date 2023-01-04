@@ -1,0 +1,28 @@
+body  {
+    background-image: url(../img/fondoMosaico.jpeg);
+    background-repeat: none;
+    background-attachment: fixed;
+}
+
+.book-a-table {
+	background-color: var(--fondo-cosas);
+}
+
+.container-principal {
+	display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.btn {
+	background-color: var(--menu) !important;
+	border: none !important;
+	color: white !important;
+}
+
+.btn:hover {
+	scale: 1.1 !important;
+	background-color: var(--menu) !important;
+	color: white !important;
+}

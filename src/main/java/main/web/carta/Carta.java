@@ -11,8 +11,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import main.aplicacion.plato.Plato;
 import main.web.menu.Menu;
-import main.web.plato.Plato;
 
 @Entity
 @Table(name="cartas")

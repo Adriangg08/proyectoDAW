@@ -63,10 +63,6 @@ body {
     position: relative;
 }
 
-.carta .item:hover {
-    scale: 1.05;
-}
-
 .carta .item:last-of-type {
 	height: 440px;
 	justify-content: center;

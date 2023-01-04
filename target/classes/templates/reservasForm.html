@@ -1,0 +1,76 @@
+
+<section id="book-a-table" class="book-a-table p-3">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Reserva tu mesa</h2>
+        </div>
+
+        <form th:action="@{/reservas/add/}" th:object="${reservaNueva}" method="post" id="formAdd">
+			
+		 	<div th:fragment= "reservasForm">
+			
+		          <div class="row">
+					  
+		            <div class="col-lg-4 col-md-6 form-group mt-3">
+					  <label for="nombre">Nombre: </label>
+		              <input type="text" th:field="*{nombre}" class="form-control" id="nombre" placeholder="Nombre">
+		              <div class="validate"></div>
+		            </div>
+		            
+		            <div class="col-lg-4 col-md-6 form-group mt-3">
+					  <label for="mail">Correo electronico: </label>
+		              <input type="email" class="form-control" th:field="*{mail}" id="mail" placeholder="Correo electronico" data-rule="email" data-msg="Porfavor introduzca un correo valido">
+		              <div class="validate"></div>
+		            </div>
+		            
+		            <div class="col-lg-4 col-md-6 form-group mt-3">
+					  <label for="telefono">Numero de telefono: </label>
+		              <input type="tel" class="form-control" th:field="*{telefono}" id="telefono" placeholder="N telefono" data-rule="minlen:9" data-msg="Porfavor introduzca un numero valido">
+		              <div class="validate"></div>
+		            </div>
+		            
+		            <div class="col-lg-4 col-md-6 form-group mt-3">
+					  <label for="numPersonas">Numero de personas: </label>
+		              <input type="number" th:field="*{num_personas}" class="form-control" id="numPersonas" placeholder="Numero de personas">
+		              <div class="validate"></div>
+		            </div>
+		            
+		            <div class="col-lg-4 col-md-6 form-group mt-3">
+					  <label for="numCeliacos">Numero de celiacos: </label>
+		              <input type="number" class="form-control" th:field="*{num_celiacos}" id="numCeliacos" placeholder="Numero de celiacos">
+		              <div class="validate"></div>
+		            </div>
+		            
+		            <div class="col-lg-4 col-md-6 form-group mt-3">
+					  <label for="fechaReserva">Fecha reserva: </label>
+		              <input type="date" class="form-control" th:field="*{fecha_reserva}" id="fechaReserva" placeholder="Fecha reserva">
+		              <div class="validate"></div>
+		            </div>
+		            
+		            <div class="col-lg-4 col-md-6 form-group mt-3">
+					  <label for="llevar">Para llevar?</label>
+		              <input type="checkbox" th:field="*{para_llevar}" id="llevar">
+		              <div class="validate"></div>
+		            </div>
+		            
+		          </div>
+		          
+		          <div class="form-group mt-3">
+		            <textarea class="form-control" th:field="*{comentario}" rows="5" placeholder="Comentarios adicionales"></textarea>
+		            <div class="validate"></div>
+		          </div>
+		          
+		          <!--Mensaje carga
+		          <div class="mb-3">
+		            <div class="loading">Loading</div>
+		            <div class="error-message"></div>
+		            <div class="sent-message">Your booking request was sent. We will call back or send an Email to confirm your reservation. Thank you!</div>
+		          </div>
+		          -->
+		       
+		  	</div>
+        </form>
+
+      </div>
+ </section>

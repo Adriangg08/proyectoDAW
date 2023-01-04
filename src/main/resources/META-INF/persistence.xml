@@ -12,11 +12,12 @@
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
        <!--  <class>com.idGrupo.MavenHibernateProject.Modelo.Alumno</class>-->
 
- 			 <class>main.model.Carta</class>
- 			 <class>main.model.Plato</class>
- 			 <class>main.model.Menu</class>
- 			 <class>main.model.Ingrediente</class>
- 			 <class>main.model.Stock</class>
+ 			 <class>main.web.Carta</class>
+ 			 <class>main.web.Menu</class>
+ 			 <class>main.web.reserva</class>
+ 			 <class>main.aplicacion.Plato</class>
+ 			 <class>main.aplicacion.Ingrediente</class>
+ 			 <class>main.aplicacion.Stock</class>
                        
         <properties>
              

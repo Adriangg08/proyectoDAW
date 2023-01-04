@@ -1,0 +1,21 @@
+.btn {
+	background-color: var(--menu);
+	border: none;
+	color: white;
+}
+
+.btn:hover {
+	scale: 1.1;
+	background-color: var(--menu);
+	color: white;
+}
+
+.btn-secondary {
+	color: black;
+	background-color: white;
+	border: 1px solid black;
+}
+
+td, tr {
+	text-align: center;
+}

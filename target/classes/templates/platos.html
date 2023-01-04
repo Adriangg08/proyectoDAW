@@ -1,22 +1,23 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<div th:insert="librerias::librerias"></div>
-	</head>
-	<body>
+
+<div th:fragment="platos">
+	<link rel="stylesheet" href="../css/platos.css">
+	<!--Buscar mejor solucion a los estilos-->
+	<link rel="stylesheet" href="../css/darkMode.css">
+	<div class="container">
 			
-		<div class="container">
-			
-			<h1>Plato</h1>
+			<h1>Platos</h1>
 			
 			<table class="table table-hover">
 				<thead class="table-dark bg-info text-white">
 				
 					<tr>
 						<th>Id</th>
-						<th>Nombre Plato</th>
+						<th>Nombre</th>
+						<th>Carta</th>
 						<th>Alergenos</th>
 						<th>Precio</th>
+						<th>Categoria</th>
+						<th>Borrar</th>
 					</tr>
 				
 				</thead>
@@ -24,10 +25,9 @@
 				<tbody>
 					
 					<tr th:each="plato:${listaPlatos}">
+						
 						<td>
-							<a th:href = "@{/plato/{id}(id = ${plato.id})}" class = "btn btn-primary btn-sm" >
-								<span th:text = "${plato.getId()}"></span>
-							</a>
+							<a th:attr = "data-target='#modal-edit'+${plato.getId()}" data-toggle = "modal" data-target = "#modal-edit" class = "btn btn-sm text-white pointer"><i class="fa-solid fa-pen"></i></a>
 						</td>
 						
 						<td>
@@ -35,26 +35,44 @@
 						</td>
 						
 						<td>
+							
+							<div th:if="${plato.isDisponible()}">
+								<i class="fa-solid fa-check"></i>
+							</div>
+							
+							<div th:if="${!plato.isDisponible()}">
+								<i class="fa-solid fa-xmark"></i>
+							</div>
+							
+						</td>
+						
+						<td>
 							<span th:text = "${plato.getAlergenos()}"></span>
 						</td>
 						
 						<td>
-							<span th:text="${plato.getPrecio()}">Precio del pedido</spa>
+							<span th:text="${plato.getPrecio()}"></span>
 						</td>
 						
 						<td>
-							<!--Los data son para que funcione el js-->
-							<a th:attr = "data-target='#modal-edit'+${plato.getId()}" data-toggle = "modal" data-target = "#modal-edit" class = "btn btn-primary btn-sm text-white pointer">Edit</a>
+							<span th:text="${plato.getCategoria()}"></span>
 						</td>
+						<!--
+						<td>
+							Los data son para que funcione el js
+							
+							<a th:attr = "data-target='#modal-edit'+${plato.getId()}" data-toggle = "modal" data-target = "#modal-edit" class = "btn btn-sm text-white pointer"><i class="fa-solid fa-pen"></i></a>
+							
+						</td>
+						-->
 						
 						<td>
 							<!--Los data son para que funcione el js-->
-							<a th:attr = "data-target='#modal-delete'+${plato.getId()}" data-toggle = "modal" data-target = "#modal-delete" class = "btn btn-primary btn-sm text-white pointer">Delete</a>
+							<a th:attr = "data-target='#modal-delete'+${plato.getId()}" data-toggle = "modal" data-target = "#modal-delete" class = "btn btn-sm text-white pointer"><i class="fa-solid fa-trash"></i></a>
 						</td>
 						
 			<!--
 				________________________________MODAL EDIT__________________________________________
-			-->
 			
 						<div class = "modal fade" th:id = "modal-edit+${plato.getId()}">
 							
@@ -71,13 +89,13 @@
 										
 								</div>
 									
-								<form action="#" th:action="@{/plato/edit/{id}(id=${plato.getId()})}" th:object="${platoEdit}" method= "post" th:id= "formulario+${plato.getId()}">
+								<form action="#" th:action="@{/aplicacion/platos/edit/{id}(id=${plato.getId()})}" th:object="${platoEdit}" method= "post" th:id= "formulario+${plato.getId()}">
 																			
 									<div class = "modal-body">
 									
 										<p class = "error-text">Introduce el nombre del plato a añadir: <strong><span th:text = "${plato.getNombre()}"></span></strong></p>
 										
-										<!--Formulario nombre a editar-->
+										Formulario nombre a editar
 											
 										<div class = "form-row">
 											
@@ -138,9 +156,142 @@
 							</div>
 									
 						</div>	
-			<!--
+		
 				________________________________FIN MODAL EDIT______________________________________
 			-->
+			
+			<!--
+				MODAL EDIT NUEVO
+			-->
+			
+							
+					<div class="modal fade" th:id = "modal-edit+${plato.getId()}" tabindex="-1" aria-labelledby="exampleModalXlLabel" style="display: none;" aria-hidden="true">
+					  
+						  <div class="modal-dialog modal-xl">
+						    
+							    <div class="modal-content">
+							      
+								      <div class="modal-header">
+										  
+									        <h1 class="modal-title fs-4" id="exampleModalXlLabel"><span th:text = "${plato.getNombre()}"></span></h1>
+									        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+								        
+								      </div>
+								      
+								      <div class="modal-body">
+								       
+								        	<div class="d-flex flex-row">
+											
+												<div class="p-5 col-6">
+													  
+													<img th:src="@{${'../img/'+plato.getUrl()}}" th:id="foto+${plato.getId()}" class="rounded img-fluid" width="100%">
+													  
+												</div>
+												  
+												<div class="p-5 col-6">
+													  
+													<form action="#" th:action="@{/aplicacion/platos/edit/{id}(id=${plato.getId()})}" th:object="${platoEdit}" method= "post" th:id= "formulario+${plato.getId()}">
+													  
+													  	<div class = "form-row">
+													
+															<div class="form-group mt-2">    
+																
+																<label for="nombre">Nombre</label>
+																<input type="text" th:field="*{nombre}" class="form-control" id="nombre" th:placeholder="${plato.getNombre()}"/>
+																
+															</div>
+																
+														</div>
+															
+														<div class = "form-row">
+															
+															<div class="form-group mt-2">    
+																
+																<label for="alergenos">Alergenos</label>
+																<input type="text" th:field="*{alergenos}" class="form-control" id="alergenos" th:placeholder="${plato.getAlergenos()}"/>
+																
+															</div>
+																
+														</div>
+															
+														<div class = "form-row">
+															
+															<div class="form-group mt-2">    
+																
+																<label for="descripcion">Descripcion</label>
+																<input type="text" th:field="*{descripcion}" class="form-control" id="descripcion" th:placeholder="${plato.getDescripcion()}"/>
+																
+															</div>
+																
+														</div>
+															
+														<div class = "form-row">
+															
+															<div class="form-group mt-2">    
+																
+																<label for="precio">Precio</label>
+																<input type="text" th:field="*{precio}" class="form-control" id="precio" th:placeholder="${plato.getPrecio()}"/>
+																
+															</div>
+															
+																
+														</div>
+														
+														<div class = "form-row">
+															
+															<div class="form-group mt-2">    
+																
+																<select th:field="*{categoria}">
+																	<option th:value="ENTRANTES" th:text="Entrante"></option>
+																	<option th:value="PRIMEROS" th:text="Primeros"></option>
+																	<option th:value="SEGUNDOS" th:text="Segundos"></option>
+																	<option th:value="POSTRES" th:text="Postres"></option>
+																	<option th:value="BEBIDAS" th:text="Bebidas"></option>
+																</select>
+																
+															</div>
+															
+																
+														</div>
+														
+														<div class = "form-row">
+															
+															<div class="form-group mt-2">    
+																
+																<label for="disponible"> Añadir a la carta? :</label>
+																<input type="checkbox" id="disponible" th:field="*{disponible}"/>
+																
+															</div>
+																
+														</div>
+														
+													</form>
+												  
+											  	</div>
+										  
+											</div>
+								        
+								      </div>
+								      
+								    <div class="modal-footer">
+												
+										<button class="btn btn-secondary btn-sm" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+										<input type="submit" value="Editar" class="btn btn-primary float-right" th:id= "formulario+${plato.getId()}" th:form="formulario+${plato.getId()}">
+														
+									</div>
+							      
+							    </div>
+						    
+						  </div>
+					  
+					</div>
+									
+
+			
+			<!--
+				FIN MODAL EDIT NUEVO
+			-->
+			
 			
 			<!-- 
 				________________________________MODAL DELETE__________________________________________
@@ -170,7 +321,7 @@
 							<div class="modal-footer">
 												
 								<button class="btn btn-secondary btn-sm" data-dismiss="modal" aria-hidden="true">Cancelar</button>
-								<a th:href="@{/plato/delete/{id}(id=${plato.getId()})}">
+								<a th:href="@{/aplicacion/platos/delete/{id}(id=${plato.getId()})}">
 									<span class= "btn btn-danger btn-sm" value="delete">Borrar</span>
 								</a>
 												
@@ -199,6 +350,9 @@
 				</div>
 			
 			</div>
+						
+			<a href="/carta" class="btn btn-primary">Carta</a>
+			
 		</div>
 		
 		
@@ -226,51 +380,80 @@
 										<p class = "error-text">Introduce el nombre del plato</p>
 										
 										<!--Formulario nombre a editar-->
-										<form action="#" th:action="@{/plato/add/}" th:object="${platoNueva}" method="post" id="formularioAdd">
+										<form action="#" th:action="@{/aplicacion/platos/add/}" th:object="${platoNuevo}" method="post" id="formularioAdd">
 											
 											<div class = "form-row">
-											
-												<div class="form-group mt-1">    
-												
-													<label for="nombre">Nombre</label>
-													<input type="text" th:field="*{nombre}" class="form-control" id="nombre" placeholder="nombre"/>
-												
-												</div>
-												
-											</div>
-											
-											<div class = "form-row">
-											
-												<div class="form-group mt-1">    
-												
-													<label for="descripcion">Descripcion</label>
-													<input type="text" th:field="*{descripcion}" class="form-control" id="descripcion" placeholder="descripcion"/>
-												
-												</div>
-												
-											</div>
-											
-											<div class = "form-row">
-											
-												<div class="form-group mt-1">    
-												
-													<label for="alergenos">Alergenos</label>
-													<input type="text" th:field="*{alergenos}" class="form-control" id="alergenos" placeholder="alergenos"/>
-												
-												</div>
-												
-											</div>
-											
-											<div class = "form-row">
-											
-												<div class="form-group mt-1">    
-												
-													<label for="precio">Precio</label>
-													<input type="text" th:field="*{precio}" class="form-control" id="precio" placeholder="precio"/>
-												
-												</div>
-												
-											</div>
+													
+															<div class="form-group mt-2">    
+																
+																<label for="nombre">Nombre</label>
+																<input type="text" th:field="*{nombre}" class="form-control" id="nombre" placeholder="Nombre"/>
+																
+															</div>
+																
+														</div>
+															
+														<div class = "form-row">
+															
+															<div class="form-group mt-2">    
+																
+																<label for="alergenos">Alergenos</label>
+																<input type="text" th:field="*{alergenos}" class="form-control" id="alergenos" placeholder="Alergenos"/>
+																
+															</div>
+																
+														</div>
+															
+														<div class = "form-row">
+															
+															<div class="form-group mt-2">    
+																
+																<label for="descripcion">Descripcion</label>
+																<input type="text" th:field="*{descripcion}" class="form-control" id="descripcion" placeholder="Descripcion"/>
+																
+															</div>
+																
+														</div>
+															
+														<div class = "form-row">
+															
+															<div class="form-group mt-2">    
+																
+																<label for="precio">Precio</label>
+																<input type="text" th:field="*{precio}" class="form-control" id="precio" placeholder="Precio"/>
+																
+															</div>
+															
+																
+														</div>
+														
+														<div class = "form-row">
+															
+															<div class="form-group mt-2">    
+																
+																<select th:field="*{categoria}">
+																	<option th:value="ENTRANTES" th:text="Entrante"></option>
+																	<option th:value="PRIMEROS" th:text="Primeros"></option>
+																	<option th:value="SEGUNDOS" th:text="Segundos"></option>
+																	<option th:value="POSTRES" th:text="Postres"></option>
+																	<option th:value="BEBIDAS" th:text="Bebidas"></option>
+																</select>
+																
+															</div>
+															
+																
+														</div>
+														
+														<div class = "form-row">
+															
+															<div class="form-group mt-2">    
+																
+																<label for="disponible"> Añadir a la carta? :</label>
+																<input type="checkbox" id="disponible" th:field="*{disponible}"/>
+																
+															</div>
+																
+														</div>
 											
 										</form>
 											
@@ -284,6 +467,7 @@
 									</div>
 										
 								</div>
+								
 							</div>
 							
 						</div>
@@ -291,5 +475,6 @@
 			<!--
 				________________________________FIN MODAL ADD_______________________________________
 			-->
-	</body>
-</html>
+
+			
+</div>

@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import main.web.plato.Plato;
-import main.web.plato.PlatoRepo;
+import main.aplicacion.plato.Plato;
+import main.aplicacion.plato.PlatoRepo;
 
 
 @RequestMapping("/carta")
@@ -40,13 +40,20 @@ public class CartaController {
 		}
   		
 		ArrayList<Carta> listaCartas = (ArrayList<Carta>) cartaRepo.findAll();
+		ArrayList<String> listaCategorias = new ArrayList<String>();
+		listaCategorias.add("ENTRANTES");
+		listaCategorias.add("PRIMEROS");
+		listaCategorias.add("SEGUNDOS");
+		listaCategorias.add("POSTRES");
+		listaCategorias.add("BEBIDAS");
 		
 		model.addAttribute("listaCartas",listaCartas);
 		model.addAttribute("listaPlatos",listaPlatos);
 		model.addAttribute("cartaNueva",new Carta());
 		model.addAttribute("platoEdit",new Plato());
+		model.addAttribute("listaCategorias",listaCategorias);
 		
-		return "carta";
+		return "cartaBien";
 	}
 	
 	/*Añadir*/
