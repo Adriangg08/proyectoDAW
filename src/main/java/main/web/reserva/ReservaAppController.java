@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import main.web.carta.Carta;
+import main.web.carta.CartaRepo;
 import main.web.reserva.Reserva;
 import main.web.reserva.ReservaRepo;
 
@@ -22,13 +24,18 @@ public class ReservaAppController {
 	@Autowired
 	private ReservaRepo reservaRepo;
 	
+	@Autowired
+	private CartaRepo  cartaRepo;
+	
 	@GetMapping(value = {"","/"})
 	String homereservas(Model model) {
 		ArrayList<Reserva> listaReservas = (ArrayList<Reserva>) reservaRepo.findAll();
+		ArrayList<Carta> listaCarta = (ArrayList<Carta>) cartaRepo.findAll();
 		
 		model.addAttribute("listaReservas",listaReservas);
 		model.addAttribute("reservaNueva",new Reserva());
 		model.addAttribute("reservaEdit",new Reserva());
+		model.addAttribute("listaCarta",listaCarta);
 		
 		return "reservasApp";
 	}

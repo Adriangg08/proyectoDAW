@@ -3,10 +3,25 @@ body.dark {
     color: white;
 }
 
+.text-general {
+	color: var(--color-general);
+}
+
+.title-general {
+	color: var(--color-general);
+	font-weight: bolder;
+	font-size: 2em;
+}
+
+.background-general {
+	background-color: var(--color-general);
+}
+
 :root {
     --fondo: white;
     --texto: black;
     --fondo-cosas: rgba(255, 255, 255, 0.938);
     --platos: rgb(231, 229, 229);
     --menu: rgb(119, 20, 20);
+    --color-general:  rgb(119, 20, 20);
 }

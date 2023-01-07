@@ -117,11 +117,10 @@
 							<span th:text = "${reserva.getFecha_reserva()}"></span>
 						</td>
 						
-						<!--
-						<td th:each="plato:${listaPlatos}" th:if="${listaPlatos.empty()}">
+
+						<td th:each="plato:${reserva.getPlatos()}">
 							<span th:text = "${plato.getNombre()}"></span>
 						</td>
-						-->
 						
 						<td>
 							<span th:text = "${reserva.getEstado()}"></span>
@@ -211,9 +210,17 @@
 											              <div class="validate"></div>
 											            </div>
 											            
-											            <div class="col-lg-4 col-md-6 form-group mt-3">
+											             <div class="col-lg-4 col-md-6 form-group mt-3">
 														  <label for="llevar">Para llevar?</label>
 											              <input type="checkbox" th:field="*{para_llevar}" id="llevar">
+											              <div class="validate"></div>
+											            </div>
+											            
+											            <div class="col-lg-4 col-md-6 form-group mt-3">
+														  <label for="platos">Platos</label>
+											              <select th:field="*{platos}">
+															 <option th:each="plato:${listaCarta}" th:value="${plato.getId()}" th:text="${plato.getNombre()}"></option>
+											              </select>
 											              <div class="validate"></div>
 											            </div>
 											            
