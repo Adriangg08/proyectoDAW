@@ -20,7 +20,7 @@
 		
 		<main id="main">
 		
-			<section class="p-3">
+			<section class="p-3" style="min-height: 100vh">
 				
 				<div class="container aos-init aos-animate" data-aos="fade-up">
 					
@@ -40,7 +40,7 @@
 						
 						<li class="nav-item" role="presentation" th:each="categ:${listaCategorias}">
 							
-							<a class="nav-link" data-bs-toggle="tab" th:data-bs-target="${categ}" aria-selected="true" role="tab">
+							<a class="nav-link" data-bs-toggle="tab" th:data-bs-target="${'#'+categ}" aria-selected="true" role="tab">
 								
 								<h4 th:text="${categ}" class="text-general fs-3"></h4>
 							
@@ -50,9 +50,9 @@
 						
 					</ul>
 					
-					<div class="tab-content aos-init aos-animate p-4" data-aos="fade-up" data-aos-delay="300" th:each="categ:${listaCategorias}">
+					<div class="tab-content aos-init aos-animate p-4" data-aos="fade-up" data-aos-delay="300">
 						
-						<div class="tab-pane fade active show" th:id="${categ}" role="tabpanel">
+						<div class="tab-pane fade show" th:id="${categ}" role="tabpanel" th:each="categ:${listaCategorias}">
 							
 							<div class="tab-header text-center">
 								
@@ -64,7 +64,7 @@
 								
 								<div th:each="plato:${listaPlatos}">
 							
-									<div class="col-lg-4 menu-item" th:if="${plato.getCategoria().compareTo(categ)} == 0">
+									<div class="col-lg-4 menu-item background-general text-white position-relative" th:if="${plato.getCategoria().compareTo(categ)} == 0">
 											
 											<img th:src="@{${'../img/'+plato.getUrl()}}" class="menu-img img-fluid" width="100%">
 		
@@ -75,6 +75,8 @@
 											-->
 											
 											<p th:text="${plato.getPrecio()}+€"></p>
+											
+											<a class="position-absolute top-0 start-100 translate-middle background-general p-1 fs-4" th:href="@{/add/{id}(id=${plato.getId()})}"><i class="fa-solid fa-cart-plus"></i></a>
 											
 									</div>
 								
@@ -92,4 +94,6 @@
 		</main>
 		
 	</body>
+	
+	<footer th:insert="footer::footer"></footer>
 </html>

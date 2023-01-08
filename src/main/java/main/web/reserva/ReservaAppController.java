@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import main.web.carta.Carta;
+import main.web.carta.CartaController;
 import main.web.carta.CartaRepo;
 import main.web.reserva.Reserva;
 import main.web.reserva.ReservaRepo;
