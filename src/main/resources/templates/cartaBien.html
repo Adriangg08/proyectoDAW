@@ -76,7 +76,7 @@
 											
 											<p th:text="${plato.getPrecio()}+€"></p>
 											
-											<a class="position-absolute top-0 start-100 translate-middle background-general p-1 fs-4" th:href="@{/add/{id}(id=${plato.getId()})}"><i class="fa-solid fa-cart-plus"></i></a>
+											<a class="position-absolute top-0 start-100 translate-middle background-general text-white p-1 fs-4 rounded" th:href="@{/carta/add/{id}(id=${plato.getId()})}"><i class="fa-solid fa-cart-plus"></i></a>
 											
 									</div>
 								
@@ -86,6 +86,12 @@
 							
 						</div>
 								
+					</div>
+					
+					<div class="position-fixed top-100 start-100 translate-middle">
+					
+						<span class="background-general text-white p-2"><i class="fa-solid fa-cart-shopping"></i></span>
+					
 					</div>
 					
 				</div>	

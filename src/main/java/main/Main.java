@@ -56,7 +56,7 @@ public class Main {
 //		p2.setNombre("Filete solomillo");
 //		p2.setDisponible(true);
 //		p2.setDescripcion("Filete de solomillo en milhoja de manchego");
-//		p2.setPrecio(25.0);
+//		p2.setPrecio(25.0);	
 //		p2.setUrl("Filete de solomillo en milhoja de manchego.jpeg");
 //		
 //		

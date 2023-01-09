@@ -48,9 +48,9 @@
 		              <div class="validate"></div>
 		            </div>
 		            
-		            <div class="col-lg-4 col-md-6 form-group mt-3">
+		            <div class="col-lg-4 col-md-6 form-group mt-3" th:if="${platosReserva} != null">
 					  
-					  	<label for="platos">Fecha reserva: </label>
+					  	<label for="platos">Platos reserva: </label>
 						  
 						<div th:if="${platosReserva.isEmpty()}">
 							

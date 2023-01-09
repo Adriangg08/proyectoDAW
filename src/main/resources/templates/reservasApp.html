@@ -153,7 +153,7 @@
 							      
 								      <div class="modal-header">
 										  
-									        <h1 class="modal-title fs-4" id="exampleModalXlLabel"><span th:text = "${reserva.getNombre()}"></span></h1>
+									        <h1 class="modal-title fs-4" id="exampleModalXlLabel"><span>Editar reserva</span></h1>
 									        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
 								        
 								      </div>
@@ -164,10 +164,6 @@
 										<section id="book-a-table" class="book-a-table p-3">
 											
 										      <div class="container" data-aos="fade-up">
-										
-										        <div class="section-title">
-										          <h2>Editar reserva</h2>
-										        </div>
 										
 										        <form th:action="@{/aplicacion/reservas/edit/{id}(id=${reserva.getId()})}" th:object="${reservaEdit}" method="post" th:id= "formulario+${reserva.getId()}">
 			
@@ -224,12 +220,73 @@
 											              <div class="validate"></div>
 											            </div>
 											            
-											          </div>
+											            <div class="col-lg-4 col-md-6 form-group mt-3">
+															
+														  <span>Platos actuales en la reserva: </span>
+														  
+															<div th:each="plato:${reserva.getPlatos()}">
+																
+																<span th:text="${plato.getNombre()}"></span>
+																<span th:text="${plato.getPrecio()}"></span>
+																<a class = "btn btn-sm text-white pointer"><i class="fa-solid fa-trash"></i></a>
+																
+															</div>
+														  
+														  <!--
+											              <table class="table table-hover">
+																
+																<thead class="table-dark bg-info text-white">
+																
+																	<tr>
+																		<th>Nombre Plato</th>
+																		<th>Precio</th>
+																		<th>Cantidad</th>
+																		<th>Eliminar</th>
+																	</tr>
+																
+																</thead>
+																
+																<tbody>
+																	
+																	<tr th:each="plato:${reservaEdit.getPlatos()}">
+												
+																		<td>
+																			<span th:text = "${plato.getNombre()}"></span>
+																		</td>
+																		
+																		<td>
+																			<span th:text = "${plato.getPrecio()}"></span>		
+																		</td>
+																		
+																		<td>
+																			<span>Cantidad</span>
+																		</td>
+																		
+																		<td>
+																			<span><i class="fa-solid fa-trash"></i></span>
+																		</td>
+																		
+																	</tr>
+																	
+																</tbody>
+																
+															</table>
+															-->
+															
+											            </div>
+											              
+											            <div class="validate"></div>
+											              
+											            </div>
 											          
 											          <div class="form-group mt-3">
 											            <textarea class="form-control" th:field="*{comentario}" rows="5" th:placeholder="${reserva.getComentario()}"></textarea>
 											            <div class="validate"></div>
 											          </div>
+											          
+													</form>
+											   
+											   	</div>
 											          
 											          <!--Mensaje carga
 											          <div class="mb-3">
@@ -239,37 +296,33 @@
 											          </div>
 											          -->
 												  
-										        </form>
+										        
 										
 										      </div>
 										 </section>
 								        
-								      </div>
-								      
-								    <div class="modal-footer">
-												
-										<button class="btn btn-secondary btn-sm" data-dismiss="modal" aria-hidden="true">Cancelar</button>
-										<input type="submit" value="Editar" class="btn btn-primary float-right" th:id= "formulario+${reserva.getId()}" th:form="formulario+${reserva.getId()}">
-														
-									</div>
+								        <div class="modal-footer">
+													
+											<button class="btn btn-secondary btn-sm" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+											<input type="submit" value="Editar" class="btn btn-primary float-right" th:id= "formulario+${reserva.getId()}" th:form="formulario+${reserva.getId()}">
+															
+										</div>
+								        
+								        
+								      </div>  
 							      
 							    </div>
 						    
 						  </div>
 					  
-					</div>
-									
-
-			
+					
 			<!--
 				FIN MODAL EDIT NUEVO
 			-->
-			
-			
+
 			<!-- 
 				________________________________MODAL DELETE__________________________________________
-			-->
-			
+			-->			
 				<div class = "modal fade" th:id = "modal-delete+${reserva.getId()}">
 							
 					<div class = "modal-dialog" role = "document">
@@ -314,6 +367,7 @@
 				
 			</table>
 			
+			
 			<div class="col-2 float-right">
 			
 				<div class="p-5">
@@ -327,8 +381,6 @@
 			<a href="/carta" class="btn btn-primary">Carta</a>
 			
 		</div>
-		
-		
 		<!--
 			____________________________________________MODAL ADD_________________________________________
 		-->
