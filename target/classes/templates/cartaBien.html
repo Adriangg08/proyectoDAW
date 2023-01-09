@@ -38,6 +38,16 @@
 						
 					<ul class="nav nav-tabs d-flex justify-content-center aos-init aos-animate p-2" data-aos="fade-up" data-aos-delay="200" role="tablist">
 						
+						<li class="nav-item" role="presentation">
+							
+							<a class="nav-link active" data-bs-toggle="tab" data-bs-target="#TODO" aria-selected="true" role="tab">
+								
+								<h4 class="text-general fs-3">TODO</h4>
+							
+							</a>
+							
+						</li>
+						
 						<li class="nav-item" role="presentation" th:each="categ:${listaCategorias}">
 							
 							<a class="nav-link" data-bs-toggle="tab" th:data-bs-target="${'#'+categ}" aria-selected="true" role="tab">
@@ -85,12 +95,167 @@
 							</div>
 							
 						</div>
+						
+						<div class="tab-pane fade show active" th:id="TODO" role="tabpanel">
+							
+							<div class="tab-header text-center">
+								
+								<h3>TODO</h3>
+								
+							</div>
+							
+							<div class="row gy-5">
+								
+								<div th:each="plato:${listaPlatos}">
+							
+									<div class="col-lg-4 menu-item bg-secondary text-white position-relative">
+											
+											<img th:src="@{${'../img/'+plato.getUrl()}}" class="menu-img img-fluid" width="100%">
+		
+											<div class="p-3 d-flex justify-content-evenly">
+												
+												<span class="fs-4 bolder" th:text="${plato.getNombre()}"></span>
+											
+												<!--
+												<p th:text="${plato.getIngredientes()}"></p>
+												-->
+												
+												<span class="fs-4 bolder" th:text="${plato.getPrecio()}+€"></span>
+												
+											</div>
+											
+											<a class="position-absolute top-0 start-100 translate-middle background-general text-white p-1 fs-4 rounded" th:href="@{/carta/add/{id}(id=${plato.getId()})}"><i class="fa-solid fa-cart-plus"></i></a>
+											
+									</div>
+								
+								</div>
+						
+							</div>
+							
+						</div>
 								
 					</div>
 					
-					<div class="position-fixed top-100 start-100 translate-middle">
+					<div class="position-fixed translate-middle" style="top: 85%; right: 5%;">
 					
-						<span class="background-general text-white p-2"><i class="fa-solid fa-cart-shopping"></i></span>
+						<div class="container mt-3" >
+							
+					        <div class="dropup">
+								
+					            <button type="button" class="btn dropdown-toggle background-general rounded-circle" data-toggle="dropdown" style="width: 80px;height: 80px;">
+									
+					                <span class="text-white fs-4" style="cursor:pointer;"><i class="fa-solid fa-cart-shopping"></i></span>
+					                
+					            </button>
+					            
+					            <div class="dropdown-menu background-general" style="width: 50vw;">
+									
+					                <section class="h-100 h-custom">
+										
+										  <div class="container py-5 h-100 background-general">
+											  
+										    <div class="row d-flex justify-content-center align-items-center h-100">
+												
+										      <div class="col-12">
+												  
+										        <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+													
+										          <div class="card-body p-0">
+													  
+										            <div class="row g-0">
+														
+										              <div class="col-lg-8">
+														  
+										                <div class="p-5">
+															
+											                  <div class="d-flex justify-content-between align-items-center mb-5">
+											                    <h1 class="fw-bold mb-0 text-black">Platos pedido</h1>
+											                    <h6 class="mb-0 text-muted" th:text="${platosReserva.size()}+' '+platos"></h6>
+											                  </div>
+												                  
+												              <div th:each="plato:${platosReserva}">
+												                  
+												                  <hr class="my-4">
+												
+												                  <div class="row mb-4 d-flex justify-content-between align-items-center">
+																	  
+												                    <div class="col-md-2 col-lg-2 col-xl-2">
+												                      <img th:src="@{${'../img/'+plato.getUrl()}}" class="img-fluid rounded-3" alt="Cotton T-shirt">
+												                    </div>
+												                    
+												                    <div class="col-md-3 col-lg-3 col-xl-3">
+												                      <h6 class="text-muted" th:text="${plato.getCategoria()}"></h6>
+												                      <h6 class="text-black mb-0" th:text="${plato.getNombre()}"></h6>
+												                    </div>
+												                    
+												                    <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+												                      <button class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+												                        <i class="fas fa-minus"></i>
+												                      </button>
+												
+												                      <input id="form1" min="0" name="quantity" value="1" type="number" class="form-control form-control-sm" />
+												
+												                      <button class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+												                        <i class="fas fa-plus"></i>
+												                      </button>
+												                    </div>
+												                    
+												                    <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+												                      <h6 class="mb-0" th:text="${plato.getPrecio()}+€"></h6>
+												                    </div>
+												                    
+												                    <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+												                      <a th:href="@{/carta/delete/{id}(id=${plato.getId()})}" class="text-muted"><i class="fas fa-times"></i></a>
+												                    </div>
+												                  </div>
+												                  
+												             </div>   
+												
+												             <hr class="my-4">
+												
+												             <div class="pt-5">
+												             	<h6 class="mb-0"><a href="#!" class="text-body"><i class="fas fa-long-arrow-alt-left me-2"></i>Volver a la carta</a></h6>
+												             </div>
+										                  
+										                </div>
+										                
+										              </div>
+										              
+										              <div class="col-lg-4 bg-grey">
+														  
+										                <div class="p-5">
+										                  <h3 class="fw-bold mb-5 mt-2 pt-1">Total</h3>
+										                  <hr class="my-4">
+										
+										                  <div class="d-flex justify-content-between mb-4">
+										                    <h5 class="text-uppercase" th:text="${platosReserva.size()}+' '+platos"></h5>
+										                    <h5>€ 50.00</h5>
+										                  </div>
+										
+										                  <hr class="my-4">
+										
+										                  <div class="d-flex justify-content-between mb-5">
+										                    <h5 class="text-uppercase">Precio total</h5>
+										                    <h5>€ 50.00</h5>
+										                  </div>
+										
+										                  <a class="btn background-general btn-block btn-lg text-white" data-mdb-ripple-color="dark" href="/reservas">Reservar</a>
+										
+										                </div>
+										                
+										              </div>
+										              
+										            </div>
+										          </div>
+										        </div>
+										      </div>
+										    </div>
+										  </div>
+										</section>
+					            </div>
+					            
+					        </div>
+					    </div>
 					
 					</div>
 					
