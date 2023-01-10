@@ -74,6 +74,12 @@ public class CartaController {
 
 		Plato p = platoRepo.findById(id).get();
 		
+		/*
+		if(platosReserva.contains(p)) {
+			p.setCantidad(p.getCantidad()+1);
+		}
+		*/
+		
 		platosReserva.add(p);
 		
 		return "redirect:/carta";
@@ -83,21 +89,25 @@ public class CartaController {
 	public String deletePlatoReserva(@PathVariable Integer id, Model model) {
 
 		Plato p = platoRepo.findById(id).get();
+			
+		for (int i = 0; i < platosReserva.size(); i++) {
+			
+			if(platosReserva.get(i).getId() == p.getId()) {
+				
+				platosReserva.remove(platosReserva.get(i));
+					
+			} else {
+				
+			}
+			
+		}
+			
 		
-		platosReserva.remove(p);
+		
 		
 		return "redirect:/carta";
 	}
-	
-	@PostMapping("/add/reserva")
-	public String addReserva(BindingResult bindingResult) {
 
-		Reserva r = new Reserva();
-		
-		return "redirect:/carta";
-	}
-	
-	
 	
 	/*Añadir
 	@PostMapping("/add/")
