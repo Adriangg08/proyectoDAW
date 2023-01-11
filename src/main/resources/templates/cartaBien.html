@@ -74,10 +74,16 @@
 								
 								<div th:each="plato:${listaPlatos}">
 							
-									<div class="col-lg-4 menu-item background-general text-white position-relative" th:if="${plato.getCategoria().compareTo(categ)} == 0">
+									<div class="col-lg-4 menu-item background-general text-white d-flex" th:if="${plato.getCategoria().compareTo(categ)} == 0">
+										
+										<div class="col-lg-5 p-3">
 											
 											<img th:src="@{${'../img/'+plato.getUrl()}}" class="menu-img img-fluid" width="100%">
-		
+											
+										</div>
+											
+										<div class="col-lg-7 p-3">
+											
 											<h4 th:text="${plato.getNombre()}"></h4>
 											
 											<!--
@@ -86,7 +92,9 @@
 											
 											<p th:text="${plato.getPrecio()}+€"></p>
 											
-											<a class="position-absolute top-0 start-100 translate-middle background-general text-white p-1 fs-4 rounded" th:href="@{/carta/add/{id}(id=${plato.getId()})}"><i class="fa-solid fa-cart-plus"></i></a>
+											<a class=" background-general text-white p-1 fs-4 rounded" th:href="@{/carta/add/{id}(id=${plato.getId()})}"><i class="fa-solid fa-cart-plus"></i></a>
+											
+										</div>
 											
 									</div>
 								
@@ -104,31 +112,34 @@
 								
 							</div>
 							
-							<div class="row gy-5">
+							<div class="d-flex justify-content-evenly">
 								
-								<div th:each="plato:${listaPlatos}">
 							
-									<div class="col-lg-4 menu-item bg-secondary text-white position-relative">
+									<div class="col-lg-4 background-general text-white d-flex rounded" th:each="plato:${listaPlatos}">
 											
-											<img th:src="@{${'../img/'+plato.getUrl()}}" class="menu-img img-fluid" width="100%">
-		
-											<div class="p-3 d-flex justify-content-evenly">
+											<div class="col-lg-5 p-3">
+											
+												<img th:src="@{${'../img/'+plato.getUrl()}}" class="menu-img img-fluid" width="100%">
 												
-												<span class="fs-4 bolder" th:text="${plato.getNombre()}"></span>
+											</div>
+		
+											<div class="col-lg-7 p-3">
+											
+												<h4 th:text="${plato.getNombre()}"></h4>
 											
 												<!--
 												<p th:text="${plato.getIngredientes()}"></p>
 												-->
 												
-												<span class="fs-4 bolder" th:text="${plato.getPrecio()}+€"></span>
+												<p th:text="${plato.getPrecio()}+€"></p>
+												
+												<a class=" background-general text-white fs-4 shadow p-1 mb-5 rounded" th:href="@{/carta/add/{id}(id=${plato.getId()})}"><i class="fa-solid fa-cart-plus"></i></a>
 												
 											</div>
 											
-											<a class="position-absolute top-0 start-100 translate-middle background-general text-white p-1 fs-4 rounded" th:href="@{/carta/add/{id}(id=${plato.getId()})}"><i class="fa-solid fa-cart-plus"></i></a>
-											
 									</div>
 								
-								</div>
+								
 						
 							</div>
 							
