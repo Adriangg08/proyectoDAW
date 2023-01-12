@@ -1,5 +1,6 @@
 package main.aplicacion.plato;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -10,11 +11,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import main.web.carta.Carta;
 import main.web.reserva.Reserva;
+import main.web.reserva_plato.Reservas_Platos;
 
 @Entity
 @Table(name = "platos")
@@ -49,8 +52,11 @@ public class Plato {
 	@Column(name="categoria")
 	private String categoria;
 	
-	@ManyToMany(mappedBy = "platos",cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER)
-	private Set<Reserva> reservas;
+//	@ManyToMany(mappedBy = "platos",cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER)
+//	private Set<Reserva> reservas;
+	
+	@OneToMany(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER, mappedBy = "reserva")
+	private Set<Reservas_Platos> reservas_platos;
 	
 	public int getId() {
 		return id;
@@ -109,16 +115,24 @@ public class Plato {
 		this.precio = precio;
 	}
 
-	public Set<Reserva> getReservas() {
-		return reservas;
-	}
-
-	public void setReservas(Set<Reserva> reservas) {
-		this.reservas = reservas;
-	}
+//	public Set<Reserva> getReservas() {
+//		return reservas;
+//	}
+//
+//	public void setReservas(Set<Reserva> reservas) {
+//		this.reservas = reservas;
+//	}
 
 	public String getUrl() {
 		return url;
+	}
+
+	public Set<Reservas_Platos> getReservas_platos() {
+		return reservas_platos;
+	}
+
+	public void setReservas_platos(Set<Reservas_Platos> reservas_platos) {
+		this.reservas_platos = reservas_platos;
 	}
 
 	public void setUrl(String url) {
@@ -152,7 +166,7 @@ public class Plato {
 		return c;
 	}
 	
-	public Carta persist() {
+	public Carta persistC() {
 		Carta c = new Carta();
 		c.setId(getId());
 		c.setDescripcion(getDescripcion());
@@ -163,5 +177,36 @@ public class Plato {
 		
 		return c;
 	}
+	
+	public PlatoDTO persistPlatoDTO(PlatoDTO p) {
+
+		p.setId(getId());
+		p.setDescripcion(getDescripcion());
+		p.setNombre(getNombre());
+		p.setPrecio(getPrecio());
+		p.setAlergenos(getAlergenos());
+		p.setUrl(getUrl());
+		p.setCantidad(1);
+		
+		return p;
+	}
+
+	public Plato persistPlato(PlatoDTO p) {
+
+		this.setId(p.getId());
+		this.setDescripcion(p.getDescripcion());
+		this.setNombre(p.getNombre());
+		this.setPrecio(p.getPrecio());
+		this.setAlergenos(p.getAlergenos());
+		this.setUrl(p.getUrl());
+		
+		return this;
+	}
+
+	public Plato() {
+		reservas_platos = new HashSet<Reservas_Platos>();
+	}
+	
+	
 	
 }

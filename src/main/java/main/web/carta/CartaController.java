@@ -1,6 +1,7 @@
 package main.web.carta;
 
 import java.util.ArrayList;
+import java.util.ListIterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import main.aplicacion.plato.Plato;
+import main.aplicacion.plato.PlatoDTO;
 import main.aplicacion.plato.PlatoRepo;
 import main.web.reserva.Reserva;
 
@@ -30,7 +32,7 @@ public class CartaController {
 	 * Variable global para controlador reserva
 	 * Permite llevar platos a pagina reserva
 	 * */
-	public static ArrayList<Plato> platosReserva = new ArrayList<Plato>();
+	public static ArrayList<PlatoDTO> platosReserva = new ArrayList<PlatoDTO>();
 	
 	@GetMapping(value = {"","/"})
 	String homecartas(Model model) {
@@ -40,7 +42,7 @@ public class CartaController {
 		for (Plato p: listaPlatos) {
 
 			if(p.isDisponible()) {
-				cartaRepo.save(p.persist());
+				cartaRepo.save(p.persistC());
 			}
 			
 		}
@@ -73,14 +75,36 @@ public class CartaController {
 	public String addPlatoReserva(@PathVariable Integer id, Model model) {
 
 		Plato p = platoRepo.findById(id).get();
+		PlatoDTO pDTO = new PlatoDTO();
 		
-		/*
-		if(platosReserva.contains(p)) {
-			p.setCantidad(p.getCantidad()+1);
+		pDTO = p.persistPlatoDTO(pDTO);
+		
+		if (platosReserva.isEmpty()) {
+			
+			platosReserva.add(pDTO);
+			
+		} else {
+		
+			ListIterator<PlatoDTO> platos = platosReserva.listIterator();
+			platosReserva.clear();
+			
+			while(platos.hasNext()) {
+				
+				PlatoDTO plato = platos.next();
+				
+				if(plato.getId() == pDTO.getId()) { 
+					
+					platos.remove();
+					plato.setCantidad(pDTO.getCantidad()+1);
+					platos.add(plato);
+					
+				} 
+				
+				platosReserva.add(plato);
+				
+			}
+		
 		}
-		*/
-		
-		platosReserva.add(p);
 		
 		return "redirect:/carta";
 	}
@@ -89,22 +113,16 @@ public class CartaController {
 	public String deletePlatoReserva(@PathVariable Integer id, Model model) {
 
 		Plato p = platoRepo.findById(id).get();
-			
-		for (int i = 0; i < platosReserva.size(); i++) {
-			
-			if(platosReserva.get(i).getId() == p.getId()) {
-				
-				platosReserva.remove(platosReserva.get(i));
-					
-			} else {
-				
-			}
-			
-		}
-			
+		PlatoDTO pDTO = new PlatoDTO();
 		
+		pDTO = p.persistPlatoDTO(pDTO);
 		
+		if(platosReserva.contains(pDTO)) { 
 		
+			platosReserva.remove(pDTO);
+			
+		} 
+
 		return "redirect:/carta";
 	}
 

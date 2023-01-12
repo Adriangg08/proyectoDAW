@@ -117,13 +117,13 @@
 							
 									<div class="col-lg-4 background-general text-white d-flex rounded" th:each="plato:${listaPlatos}">
 											
-											<div class="col-lg-5 p-3">
+											<div class="col-lg-5 p-3 d-flex align-items-center">
 											
 												<img th:src="@{${'../img/'+plato.getUrl()}}" class="menu-img img-fluid" width="100%">
 												
 											</div>
 		
-											<div class="col-lg-7 p-3">
+											<div class="col-lg-7 p-3 d-flex align-items flex-column">
 											
 												<h4 th:text="${plato.getNombre()}"></h4>
 											
@@ -133,7 +133,7 @@
 												
 												<p th:text="${plato.getPrecio()}+€"></p>
 												
-												<a class=" background-general text-white fs-4 shadow p-1 mb-5 rounded" th:href="@{/carta/add/{id}(id=${plato.getId()})}"><i class="fa-solid fa-cart-plus"></i></a>
+												<a class="background-general text-white fs-4" th:href="@{/carta/add/{id}(id=${plato.getId()})}"><i class="fa-solid fa-cart-plus fa-solid fa-cart-plus shadow p-1 mb-5 rounded border-bottom p-3"></i></a>
 												
 											</div>
 											
@@ -204,7 +204,7 @@
 												                        <i class="fas fa-minus"></i>
 												                      </button>
 												
-												                      <input id="form1" min="0" name="quantity" value="1" type="number" class="form-control form-control-sm" />
+												                      <input id="form1" min="0" name="quantity" th:value="${plato.getCantidad()}" type="number" class="form-control form-control-sm" />
 												
 												                      <button class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
 												                        <i class="fas fa-plus"></i>

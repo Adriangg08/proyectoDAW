@@ -64,7 +64,6 @@
 						<th>N celiacos</th>
 						<th>Comentarios adicionales</th>
 						<th>Fecha</th>
-						<th>Platos</th>
 						<th>Estado</th>
 						<th>Borrar</th>
 					</tr>
@@ -115,11 +114,6 @@
 						
 						<td>
 							<span th:text = "${reserva.getFecha_reserva()}"></span>
-						</td>
-						
-
-						<td th:each="plato:${reserva.getPlatos()}">
-							<span th:text = "${plato.getNombre()}"></span>
 						</td>
 						
 						<td>

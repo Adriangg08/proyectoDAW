@@ -17,6 +17,8 @@ import main.web.carta.CartaController;
 import main.web.carta.CartaRepo;
 import main.web.reserva.Reserva;
 import main.web.reserva.ReservaRepo;
+import main.web.reserva_plato.Reserva_Platos_Repo;
+import main.web.reserva_plato.Reservas_Platos;
 
 @RequestMapping("/aplicacion/reservas")
 @Controller
@@ -24,6 +26,9 @@ public class ReservaAppController {
 
 	@Autowired
 	private ReservaRepo reservaRepo;
+	
+	@Autowired
+	private Reserva_Platos_Repo reserva_Platos_Repo;
 	
 	@Autowired
 	private CartaRepo  cartaRepo;
@@ -34,7 +39,8 @@ public class ReservaAppController {
 		ArrayList<Carta> listaCarta = (ArrayList<Carta>) cartaRepo.findAll();
 		
 		model.addAttribute("listaReservas",listaReservas);
-		model.addAttribute("reservaNueva",new Reserva());
+		model.addAttribute("reserva_plato_new", new Reservas_Platos());
+		model.addAttribute("reserva_plato_edit", new Reservas_Platos());
 		model.addAttribute("reservaEdit",new Reserva());
 		model.addAttribute("listaCarta",listaCarta);
 		
@@ -43,33 +49,33 @@ public class ReservaAppController {
 	
 	/*Añadir*/
 	@PostMapping("/add/")
-	public String addReserva(@ModelAttribute("reservaNueva") Reserva reservaNueva, BindingResult bindingResult) {
+	public String addReserva(@ModelAttribute("peserva_plato_new") Reservas_Platos r, BindingResult bindingResult) {
 
-		reservaRepo.save(reservaNueva);
+		reserva_Platos_Repo.save(r);
 		
 		return "redirect:/aplicacion/reservas";
 	}
 	
 	/*Editar por Id*/
 	@PostMapping("/edit/{id}")
-	public String editarReserva(@PathVariable Integer id, @ModelAttribute("reservaEdit") Reserva reservaEdit, BindingResult bindingResult) {
+	public String editarReserva(@PathVariable Integer id, @ModelAttribute("reserva_plato_edit") Reservas_Platos r, BindingResult bindingResult) {
 		
 		/*Busco la reserva a editar en la BBDD*/
-		Reserva reservaEdited = reservaRepo.findById(id).get();
+		Reservas_Platos reservaEdited = new Reservas_Platos();
 		
 		/*Edito cada atributo*/
-		reservaEdited.setNombre(reservaEdit.getNombre());
-		reservaEdited.setTelefono(reservaEdit.getTelefono());
-		reservaEdited.setMail(reservaEdit.getMail());
-		reservaEdited.setNum_personas(reservaEdit.getNum_personas());
-		reservaEdited.setNum_celiacos(reservaEdit.getNum_celiacos());
-		reservaEdited.setEstado(reservaEdit.getEstado());
-		reservaEdited.setComentario(reservaEdit.getComentario());
-		reservaEdited.setPara_llevar(reservaEdit.isPara_llevar());
-		reservaEdited.setFecha_reserva(reservaEdit.getFecha_reserva());
-		reservaEdited.setPlatos(reservaEdit.getPlatos());
+		reservaEdited.getReserva().setNombre( r.getReserva().getNombre());
+		reservaEdited.getReserva().setTelefono( r.getReserva().getTelefono());
+		reservaEdited.getReserva().setMail( r.getReserva().getMail());
+		reservaEdited.getReserva().setNum_personas( r.getReserva().getNum_personas());
+		reservaEdited.getReserva().setNum_celiacos( r.getReserva().getNum_celiacos());
+		reservaEdited.getReserva().setEstado( r.getReserva().getEstado());
+		reservaEdited.getReserva().setComentario( r.getReserva().getComentario());
+		reservaEdited.getReserva().setPara_llevar( r.getReserva().isPara_llevar());
+		reservaEdited.getReserva().setFecha_reserva( r.getReserva().getFecha_reserva());
+//		reservaEdited.setPlatos(reservaEdit.getPlatos());
 		/*Persist*/
-		reservaRepo.save(reservaEdited);
+		reserva_Platos_Repo.save(reservaEdited);
 		
 		return "redirect:/aplicacion/reservas";
 	}

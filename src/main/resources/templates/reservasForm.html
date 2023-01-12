@@ -1,57 +1,48 @@
-
-<section id="book-a-table" class="book-a-table p-3">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Reserva tu mesa</h2>
-        </div>
-
-        <form th:action="@{/reservas/add/}" th:object="${reservaNueva}" method="post" id="formAdd">
-			
 		 	<div th:fragment= "reservasForm">
 			
 		          <div class="row">
 					  
-		            <div class="col-lg-4 col-md-6 form-group mt-3">
+		            <div class="col-lg-4 col-md-6 form-group mt-4">
 					  <label for="nombre">Nombre: </label>
-		              <input type="text" th:field="*{nombre}" class="form-control" id="nombre" placeholder="Nombre">
+		              <input type="text" th:field="*{nombre}" class="form-control mt-1" id="nombre" placeholder="Nombre">
 		              <div class="validate"></div>
 		            </div>
 		            
-		            <div class="col-lg-4 col-md-6 form-group mt-3">
+		            <div class="col-lg-4 col-md-6 form-group mt-4">
 					  <label for="mail">Correo electronico: </label>
-		              <input type="email" class="form-control" th:field="*{mail}" id="mail" placeholder="Correo electronico" data-rule="email" data-msg="Porfavor introduzca un correo valido">
+		              <input type="email" class="form-control mt-1" th:field="*{mail}" id="mail" placeholder="Correo electronico" data-rule="email" data-msg="Porfavor introduzca un correo valido">
 		              <div class="validate"></div>
 		            </div>
 		            
-		            <div class="col-lg-4 col-md-6 form-group mt-3">
+		            <div class="col-lg-4 col-md-6 form-group mt-4">
 					  <label for="telefono">Numero de telefono: </label>
-		              <input type="tel" class="form-control" th:field="*{telefono}" id="telefono" placeholder="N telefono" data-rule="minlen:9" data-msg="Porfavor introduzca un numero valido">
+		              <input type="tel" class="form-control mt-1" th:field="*{telefono}" id="telefono" placeholder="N telefono" data-rule="minlen:9" data-msg="Porfavor introduzca un numero valido">
 		              <div class="validate"></div>
 		            </div>
 		            
-		            <div class="col-lg-4 col-md-6 form-group mt-3">
+		            <div class="col-lg-4 col-md-6 form-group mt-4">
 					  <label for="numPersonas">Numero de personas: </label>
-		              <input type="number" th:field="*{num_personas}" class="form-control" id="numPersonas" placeholder="Numero de personas">
+		              <input type="number" th:field="*{num_personas}" class="form-control mt-1" id="numPersonas" placeholder="Numero de personas">
 		              <div class="validate"></div>
 		            </div>
 		            
-		            <div class="col-lg-4 col-md-6 form-group mt-3">
+		            <div class="col-lg-4 col-md-6 form-group mt-4">
 					  <label for="numCeliacos">Numero de celiacos: </label>
-		              <input type="number" class="form-control" th:field="*{num_celiacos}" id="numCeliacos" placeholder="Numero de celiacos">
+		              <input type="number" class="form-control mt-1" th:field="*{num_celiacos}" id="numCeliacos" placeholder="Numero de celiacos">
 		              <div class="validate"></div>
 		            </div>
 		            
-		            <div class="col-lg-4 col-md-6 form-group mt-3">
+		            <div class="col-lg-4 col-md-6 form-group mt-4">
 					  <label for="fechaReserva">Fecha reserva: </label>
-		              <input type="date" class="form-control" th:field="*{fecha_reserva}" id="fechaReserva" placeholder="Fecha reserva">
+		              <input type="date" class="form-control mt-1" th:field="*{fecha_reserva}" id="fechaReserva" placeholder="Fecha reserva">
 		              <div class="validate"></div>
 		            </div>
 		            
-		            <div class="col-lg-4 col-md-6 form-group mt-3" th:if="${platosReserva} != null">
+		            <div class="col-lg-6 col-md-6 form-group mt-5 ps-5 pe-5" th:if="${platosReserva} != null">
 					  
-					  	<label for="platos">Platos reserva: </label>
-						  
+					  	
+					  	
+						<!--  
 						<div th:if="${platosReserva.isEmpty()}">
 							
 				              <select th:field="*{platos}">
@@ -60,75 +51,91 @@
 									
 							  </select>
 						</div>
+						-->
 						
 						<div th:if="${!platosReserva.isEmpty()}">
 							
-							<table class="table table-hover">
+							<label for="platos">Platos reserva: </label>
+							
+							<hr class="my-4">
+							
+							<div th:each="plato:${platosReserva}">
+												                  
 								
-								<thead class="table-dark bg-info text-white">
-								
-									<tr>
-										<th>Nombre Plato</th>
-										<th>Precio</th>
-										<th>Cantidad</th>
-										<th>Eliminar</th>
-									</tr>
-								
-								</thead>
-								
-								<tbody>
-									
-									<tr th:each="plato:${platosReserva}">
-				
-										<td>
-				
-											<span th:text = "${plato.getNombre()}"></span>
-											
-										</td>
+							
+								<div class="row mb-4 d-flex justify-content-between align-items-center">
+																	  
+									<div class="col-md-2 col-lg-2 col-xl-2">
 										
-										<td>
-				
-											<span th:text = "${plato.getPrecio()}"></span>
-											
-										</td>
+										<img th:src="@{${'../img/'+plato.getUrl()}}" class="img-fluid rounded-3" alt="Cotton T-shirt">
 										
-										<td>
-				
-											<span>Cantidad</span>
-											
-										</td>
+									</div>
+												                    
+									<div class="col-md-3 col-lg-3 col-xl-3">
 										
-										<td>
-				
-											<a th:href="@{/reservas/delete/{id}(id=${plato.getId()})}"> <i class="fa-solid fa-trash"></i></a>
-											
-										</td>
+										<h6 class="text-muted" th:text="${plato.getCategoria()}"></h6>
+										<h6 class="text-black mb-0" th:text="${plato.getNombre()}"></h6>
 										
-									</tr>
-									
-								</tbody>
+								 	</div>
+												                    
+									<div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+										<button class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+											<i class="fas fa-minus"></i>
+										</button>
+												
+										<input id="form1" min="0" name="quantity" value="1" type="number" class="form-control form-control-sm" />
+													
+										<button class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+											<i class="fas fa-plus"></i>
+										</button>
+									</div>
+												                    
+									<div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+										<h6 class="mb-0" th:text="${plato.getPrecio()}+€"></h6>
+									</div>
+												                    
+									<div class="col-md-1 col-lg-1 col-xl-1 text-end">
+										<a th:href="@{/reservas/delete/{id}(id=${plato.getId()})}" class="text-muted"><i class="fas fa-times"></i></a>
+									</div>
+								</div>
 								
-							</table>
+								<hr class="my-4">
+												                  
+							</div>   
+							
+						</div>
+						
+						<div th:if="${platosReserva.isEmpty()}" class="d-flex justify-content-center">
+							
+							<img src="../img/logoNegro.jpeg" class="rounded img-fluid" style="max-width: 50%"></img>
 							
 						</div>
 					  
 		              <div class="validate"></div>
 		            </div>
 		            
-		            <div class="col-lg-4 col-md-6 form-group mt-3">
+		            
+		            <div class="col-lg-6 col-md-6 form-group mt-5 ps-5 pe-5">
+						<label for="comentario">Algo que debamos saber?</label>
+			            <textarea class="form-control mt-1" th:field="*{comentario}" rows="5" placeholder="Comentarios adicionales"></textarea>
+			            <div class="validate"></div>
+			        </div>
+		          
+		            <div class="col-lg-2 col-md-6 form-group mt-5">
 					  <label for="llevar">Para llevar?</label>
 		              <input type="checkbox" th:field="*{para_llevar}" id="llevar">
 		              <div class="validate"></div>
 		            </div>
 		            
+		             <div class="col-lg-4 col-md-6 form-group mt-5" th:if="${platosReserva.isEmpty()}">
+					  
+					  	<a class="text-general fw-bolder text-decoration-underline" href="/carta">Añadir platos a la reserva -></a>
+					  
+		            </div>
 		            
-		            
-		          </div>
+		       </div>
 		          
-		          <div class="form-group mt-3">
-		            <textarea class="form-control" th:field="*{comentario}" rows="5" placeholder="Comentarios adicionales"></textarea>
-		            <div class="validate"></div>
-		          </div>
+		          
 		          
 		          <!--Mensaje carga
 		          <div class="mb-3">
@@ -139,7 +146,3 @@
 		          -->
 		       
 		  	</div>
-        </form>
-
-      </div>
- </section>
